@@ -24,7 +24,7 @@ Many writers and storytellers struggle to bring their narratives to life in a vi
 1. Create a fork on the repository
 2. Clone the forked repository 
     ```zsh
-    git clone https://github.com/upes-open/OSoC-24-Text-to-Comic
+    git clone https://github.com/upes-open/OSoC-24-Comic-Craft
     ```
 3. Open the cloned repository in your desired code editor (eg: VS Code, Zed, Sublime Text)
 
