@@ -5,26 +5,16 @@
 
 </div>
 
-> Project Description
-
+## Project Description <br>
+Many writers and storytellers struggle to bring their narratives to life in a visual format. Traditional comic creation can be time-consuming and require artistic skills that not everyone possesses. Our platform will offer a seamless process for users to transform their written stories into visually stunning comics. By leveraging design with dialogue integration, it offers creation of custom comic art that captures the essence of each narrative. The final product, a polished PDF, will be delivered to the user's inbox, providing a convenient solution for storytellers looking to enhance their tales with vibrant visuals.
 <h2>Technology Stack</h2>
 
-[![My Skills](https://skillicons.dev/icons?i=react,python,c,spring,js,nodejs,flask,django)](https://skillicons.dev)<br>
-[![My Skills](https://skillicons.dev/icons?i=mysql,mongodb)](https://skillicons.dev)<br>
-[![My Skills](https://skillicons.dev/icons?i=tensorflow,opencv)](https://skillicons.dev)<br>
-[![My Skills](https://skillicons.dev/icons?i=unity,blender)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=react,tailwind,nodejs,express,mongodb)](https://skillicons.dev)<br>
 
 ## Installation
 1. Install the NodeJS LTS (v20.14.0) [Click Here](https://nodejs.org/en/download/package-manager)
 
-2. Install the latest Python version (v3.12.4) [Click Here](https://www.python.org/downloads/)
-
-3. For Python based projects:
-    ```zsh
-    pip install -r requirements.txt
-    python3 app.py
-    ```
-4. Node based projects: 
+2. Node based projects: 
     ```zsh
     cd <folder_name>
     npm i
@@ -34,7 +24,7 @@
 1. Create a fork on the repository
 2. Clone the forked repository 
     ```zsh
-    git clone <repo_link>
+    git clone https://github.com/upes-open/OSoC-24-Text-to-Comic
     ```
 3. Open the cloned repository in your desired code editor (eg: VS Code, Zed, Sublime Text)
 
@@ -54,7 +44,7 @@
 1. There are 3 level of toughness of the issues.
     1. Easy: The issues which are beginner level and easy to solve. **(10 points)**
     2. Medium: The issues which are intermediate level and a bit tricky to solve. **(20 points)**
-    3. Medium: The issues which are advanced level and includes advanced concept of the technology stack to solve. **(30 points)**
+    3. Advanced: The issues which are advanced level and includes advanced concept of the technology stack to solve. **(30 points)**
 2. Direct commit on `main` branch is restricted. Creating a branch is mandatory.
 3. Pull request without the issue number will not be merged.
 4. Scores will be weekly declared on the OPEN's website and discord.
