@@ -42,7 +42,7 @@ Many writers and storytellers struggle to bring their narratives to life in a vi
     git checkout -b <your_username>
     ```
 2. **Issues:**
-    - Find the active issues in the [issues tab](https://github.com/upes-open/OSoC-24-Comic-Craft/issues).
+    - Find the active issues in the [Issues tab](https://github.com/upes-open/OSoC-24-Comic-Craft/issues).
     - Comment on the issue, and get yourself assigned to it.
 3. **Complete the issue and raise a Pull Request containing the issue number, e.g.:**
     ```zsh
@@ -61,7 +61,7 @@ Many writers and storytellers struggle to bring their narratives to life in a vi
 2. **Direct commits on the `main` branch are restricted.** Creating a branch is mandatory.
 3. **Pull requests without the issue number will not be merged.**
 4. **Scores will be declared weekly on the OPEN's website and Discord.**
-5. **All discussions should be performed on the [Discord server](https://discord.com/invite/C6Zbecdz) or [GitHub](https://github.com/upes-open).**
+5. **All discussions should be performed on the [Discord server](https://upes-open.org/Discord) or [GitHub](https://github.com/upes-open).**
 6. **Raising and solving a self-issue will not be considered as a legitimate contribution.** See [Innovation Center](#innovation-center).
 
 ## Innovation Center
@@ -74,25 +74,8 @@ In case of any problem, kindly reach out to us via email at [upesopen@gmail.com]
 
 ## Disclaimer
 
-This project is under OSOC'24, organized by [OPEN Community, UPES](https://upes-open.org). All projects are open source with a copyleft license. Kindly review the licensing terms thoroughly to avoid any issues in code distribution. [LICENSE](). Any violation of the licensing terms will lead to unavoidable consequences.
-
-Sure, here’s a concise and easy-to-understand explanation of the AGPL-3.0 license for new contributors:
+This project is under OSoC'24, organized by [OPEN Community, UPES](https://upes-open.org). All projects are open source with a copyleft license. Kindly review the licensing terms thoroughly to avoid any issues in code distribution. [LICENSE](). Any violation of the licensing terms will lead to unavoidable consequences.
 
 ## LICENSE
-
-This project uses the AGPL-3.0 license.
-
-### What You Need to Know
-
-- **Free to Use**: You can use, modify, and share the code.
-- **Share the Source**: If you share the software, you must also share the source code.
-- **Server Use**: If you run the software on a server, you must offer the source code to users.
-- **Keep It Open**: Any changes you make must also be shared under the AGPL-3.0 license.
-
-By contributing, you agree to these terms to keep the project free and open for everyone.
-
-For more details, read the full [AGPL-3.0 license](https://www.gnu.org/licenses/agpl-3.0.en.html).
-
-## HAPPY CODING !!
 
 ---
