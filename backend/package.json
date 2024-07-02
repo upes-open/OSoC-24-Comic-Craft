@@ -1,14 +1,16 @@
 {
-  "name": "backend",
+  "name": "osoc-24-comic-craft",
   "version": "1.0.0",
-  "description": "",
+  "description": "<div align=\"center\">\r     <h1>Project Title</h1>",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^3.1.10",
     "express": "^4.19.2"
   }
 }
