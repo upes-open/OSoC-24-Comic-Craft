@@ -19,5 +19,16 @@
     - Fixes: Issue 2
     - Update: Changes in frontend/public folder
     <br>
-  
+
+     - `f3aeb72`[ParthDhavan04](https://github.com/ParthDhavan04)
+    - Feat: Low Fidelity Wireframe
+    - Fixes: Issue 4
+    - Update: New Folders UI/lowfidelity.md added
+    <br>
+
+
+
+
+
+   
   
