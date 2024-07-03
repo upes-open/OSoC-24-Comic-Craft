@@ -40,6 +40,12 @@
   - Update: highfidelity.md added
   <br>
 
+   - `1d226d8` [ParthDhavan04](https://github.com/ParthDhavan04)
+  - Feat: Create home page
+  - Fixes: Issue 8
+  - Update: New Folders frontend/public/components/src/Home and assets added
+  <br>
+
 
 
 
