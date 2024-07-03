@@ -24,8 +24,15 @@
     - Feat: Low Fidelity Wireframe
     - Fixes: Issue 4
     - Update: New Folders UI/lowfidelity.md added
-    <br>
+    <br> <br>
 
+- Date 03/07/2024
+  
+  - `b06c1be` [ParthDhavan04](https://github.com/ParthDhavan04)
+  - Feat: Fix deprecation warnings and vulnerabilities
+  - Fixes: Issue 26
+  - Update: New file babel.config.json added
+  <br>
 
 
 
