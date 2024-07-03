@@ -34,6 +34,12 @@
   - Update: New file babel.config.json added
   <br>
 
+   - `c4018f1` [ParthDhavan04](https://github.com/ParthDhavan04)
+  - Feat: High-Fidelity wireframe
+  - Fixes: Issue 5
+  - Update: highfidelity.md added
+  <br>
+
 
 
 
