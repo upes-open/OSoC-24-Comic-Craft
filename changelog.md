@@ -47,6 +47,13 @@
   <br>
 
 
+- Date 04/07/2024
+  
+  - `033f511` [ParthDhavan04](https://github.com/ParthDhavan04)
+  - Feat: Navbar created
+  - Fixes: Issue 9
+  - Update: New Folders frontend/public/components/src/Navbar added
+  <br>
 
 
    
