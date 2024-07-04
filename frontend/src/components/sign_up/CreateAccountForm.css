@@ -25,29 +25,29 @@
 
 .create-account-form {
   color: #b07156;
-  padding-top: 1rem;
+  padding-top: 2rem;
   border-radius: 8px;
   text-align: center;
   max-width: 600px;
   width: 100%;
-  margin-left: 45%;
+  margin-left: 33%;
   position: relative;
   z-index: 1; 
 }
 
 .create-account-form h1 {
-  font-size: 3.7rem;
+  font-size: 4rem;
   font-family: 'Comic Sans MS', cursive, sans-serif;
   font-weight: 700;
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
   text-shadow: -3px 0px 0px #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .create-account-form form {
   display: grid;
-  padding-top: 2rem;
+  padding-top: 0.8rem;
   grid-template-columns: 1fr 1fr;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   gap: 3rem;
   color: #22e8b9;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
