@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import HomePage from './components/Home/HomePage';
 import Generate from './components/Generate/generate'; // Ensure this path is correct
 import Navbar from './components/Nav/Navbar';
-import CreateAccountForm from './components/sign_up/CreateAccountForm';
+import Signup from './components/sign_up/signup';
 import './App.css';
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/generate" element={<Generate />} />
-        <Route path="/CreateAccountForm" element={<CreateAccountForm/>} />
+        <Route path="/signup" element={<Signup/>} />
         </Routes>
     </div>
   );
