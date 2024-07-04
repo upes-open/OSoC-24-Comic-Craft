@@ -1,0 +1,153 @@
+
+.background {
+  background-color: #254c44; 
+  background-image: url('../../assets/bg-image.png'); 
+  background-size: cover; 
+  background-position: left top; 
+  height: 1300px;
+  padding: 0rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1; 
+}
+
+@media (max-width: 768px) {
+  .background::before {
+    width: 100%;
+  }
+}
+
+/* Create Account Form styles */
+.create-account-form {
+  color: #b07156;
+  padding-top: 4rem;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+  margin-left: 45%;
+  position: relative;
+  z-index: 1; 
+}
+
+.create-account-form h1 {
+  font-size: 3.7rem;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-shadow: -3px 0px 0px #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.create-account-form form {
+  display: grid;
+  padding-top: 2rem;
+  grid-template-columns: 1fr 1fr;
+  font-size: 1.2rem;
+  gap: 3rem;
+  color: #22e8b9;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  text-align: left;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.create-account-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.create-account-form .form-group label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.create-account-form .form-group input,
+.create-account-form .form-group select {
+  padding: 0.6rem;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background-color: #87BBA2;
+  border: 3px solid black;
+}
+
+.create-account-form .form-group:nth-child(6) {
+  grid-column: 1 / -1;
+}
+
+.create-account-form .form-group:last-child {
+  grid-column: 1 / -1;
+}
+
+.create-account-form button {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: medium;
+  grid-column: 1 / -1;
+  border: 3px solid black;
+  border-radius: 6px;
+  background-color: #ffcc00;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  height: 40px;
+  margin-left: 260px;
+  padding: fit-content;
+  width:fit-content;
+}
+
+.create-account-form .google-signup button {
+  position: relative;
+  padding: 0.75rem 2rem 0.75rem 0.75rem; 
+  border: none;
+  border-radius: 10px;
+  background-color: #ffcc00;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  border: 3px solid black;
+  margin-top: 10px;
+  margin-left: -10px;
+}
+
+.create-account-form .google-signup button::after {
+  content: ''; 
+  position: absolute;
+  width: 24px; 
+  height: 20px;
+  background-image: url('../../assets/google-logo.png'); 
+  background-size: contain; 
+  background-repeat: no-repeat;
+  background-position: center;
+  right: 5px; 
+  top: 50%;
+  transform: translateY(-30%);
+}
+
+.create-account-form p {
+  margin: 1rem 0;
+  grid-column: 1 / -1; 
+}
+
+.error {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: -0.75rem;
+}
+
+.profile-picture-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.profile-picture-upload input {
+  margin-bottom: 1rem;
+}
+
+.profile-picture-upload img {
+  max-width: 150px;
+  border-radius: 50%;
+}

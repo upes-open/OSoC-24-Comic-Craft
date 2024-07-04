@@ -1,7 +1,5 @@
-// src/components/CreateAccountForm.jsx
 import React, { useState } from 'react';
 import './CreateAccountForm.css';
-import ProfilePictureUpload from './ProfilePictureUpload';
 
 const CreateAccountForm = () => {
   const [formData, setFormData] = useState({
@@ -137,7 +135,7 @@ const CreateAccountForm = () => {
         </div>
 
         <div className="form-group">
-        <label htmlFor="username">Profile Picture (optional)</label>
+          <label htmlFor="profilePicture">Profile Picture (optional)</label>
           <ProfilePictureUpload
             onChange={handleChange}
             profilePicture={formData.profilePicture}
@@ -153,6 +151,32 @@ const CreateAccountForm = () => {
       </div>
     </div>
   );
+};
+
+const ProfilePictureUpload = ({ onChange }) => {
+  const [imagePreview, setImagePreview] = useState(null);
+
+  const handleImageChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      let reader = new FileReader();
+      reader.onload = (event) => {
+        setImagePreview(event.target.result);
+      };
+      reader.readAsDataURL(e.target.files[0]);
+      onChange(e);
+    }
+  };
+
+  return (
+    <div className="profile-picture-upload">
+      <input type="file" accept="image/*" onChange={handleImageChange} />
+      {imagePreview && <img src={imagePreview} alt="Profile Preview" />}
+    </div>
+  );
+};
+
+const Background = ({ children }) => {
+  return <div className="background">{children}</div>;
 };
 
 export default CreateAccountForm;

@@ -9,7 +9,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-logo">logo</div>
       <div className="navbar-items">
-        <a href="/signup">SIGNUP</a>
+        <a href="/CreateAccountForm">SIGNUP</a>
         <a href="/generate">GENERATE</a>
         <a href="/my-comics">MY COMICS</a>
         <a href="/feedback">FEEDBACK</a>
