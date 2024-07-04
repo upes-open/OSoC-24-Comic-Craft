@@ -1,28 +1,31 @@
 
-.background {
-  background-color: #254c44; 
-  background-image: url('../../assets/bg-image.png'); 
-  background-size: cover; 
-  background-position: left top; 
-  height: 1300px;
-  padding: 0rem;
+.signup-background {
+  background-color:#2c514c;
+  background-image: url('../../assets/bg-image.png');
+  background-size: contain; /* Adjust background-size as needed */
+  background-repeat: no-repeat;
+  background-position: left bottom; /* Align to left top */
+  height: 900px; 
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  z-index: 1; 
+  z-index: 1;
+
 }
+
 
 @media (max-width: 768px) {
   .background::before {
-    width: 100%;
+    width: 00%;
   }
 }
 
-/* Create Account Form styles */
+
 .create-account-form {
   color: #b07156;
-  padding-top: 4rem;
+  padding-top: 1rem;
   border-radius: 8px;
   text-align: center;
   max-width: 600px;
@@ -36,7 +39,7 @@
   font-size: 3.7rem;
   font-family: 'Comic Sans MS', cursive, sans-serif;
   font-weight: 700;
-  margin-bottom: 2rem;
+  margin-bottom: 5rem;
   text-shadow: -3px 0px 0px #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
@@ -95,7 +98,7 @@
   margin-left: 260px;
   padding: fit-content;
   width:fit-content;
-}
+ }
 
 .create-account-form .google-signup button {
   position: relative;
@@ -109,6 +112,7 @@
   border: 3px solid black;
   margin-top: 10px;
   margin-left: -10px;
+  margin-bottom: 100px;
 }
 
 .create-account-form .google-signup button::after {
@@ -123,6 +127,7 @@
   right: 5px; 
   top: 50%;
   transform: translateY(-30%);
+  margin-bottom: 100px;
 }
 
 .create-account-form p {
