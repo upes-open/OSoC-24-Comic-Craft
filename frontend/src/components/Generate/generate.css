@@ -22,9 +22,12 @@
     left: 110px;
     margin-left: 40px;
     font-size: 2.5rem;
-    font-family: "Comic Neue", cursive;
     font-weight: bolder;
     color: #fed766;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-shadow: -3px 0px 0px #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 /* .gen-content {
