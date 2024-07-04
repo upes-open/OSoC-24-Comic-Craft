@@ -1,0 +1,43 @@
+/* src/components/Navbar/navbar.css */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: #20AD9A;
+    color: white;
+  }
+  
+  .navbar-logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .navbar-items {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-items a {
+    font-family: "Comic Neue", cursive;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 18px;
+  }
+  
+.comic-neue-bold-italic {
+    font-family: "Comic Neue", cursive;
+  }
+  
+  .navbar-items a:hover {
+    text-decoration: underline;
+  }
+  
+  .navbar-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
