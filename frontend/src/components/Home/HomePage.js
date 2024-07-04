@@ -10,21 +10,21 @@ const HomePage = () => {
             <nav>
                 {/* Add your navigation items here */}
             </nav>
-            <div className="top-half">
-                <div className="text">
-                    <div className="first">WELCOME TO</div>
+            <div className="top-halfhome">
+                <div className="texthome">
+                    <div className="firsthome">WELCOME TO</div>
                     <div className="2nd">A WORLD</div>
                     <div className="3rd">OF WONDER AND WHIMSY!</div>
-                    <img src={Line1} alt="" className="src" />
+                    <img src={Line1} alt="" className="srchome" />
                 </div>
-                <div className="button-container">
-                    <button className="button">
+                <div className="button-containerhome">
+                    <button className="buttonhome">
                         LOGIN
                         <img src={RightArrow} alt="Arrow" />
                     </button>
                 </div>
             </div>
-            <div className="bottom-half">
+            <div className="bottom-halfhome">
               {/* <img src={LandingBottom} alt="Bottom" /> */}
             </div>
         </div>
