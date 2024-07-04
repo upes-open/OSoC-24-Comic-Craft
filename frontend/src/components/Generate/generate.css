@@ -1,0 +1,110 @@
+/* src/components/Generate/generate.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+
+.gen-container {
+    width: 80%;
+    max-width: 1200px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.gen-h {
+    text-align: center;
+    padding: 20px;
+    color: white;
+}
+
+.gen-head {
+    position: relative;
+    top: 10px;
+    left: 110px;
+    margin-left: 40px;
+    font-size: 2.5rem;
+    font-family: "Comic Neue", cursive;
+    font-weight: bolder;
+    color: #fed766;
+}
+
+/* .gen-content {
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px;
+    width: 10%;
+} */
+
+.gen-left {
+    flex: 1;
+    max-width: 700px;
+    margin-top: 40px;
+}
+
+.gen-left form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 250px; /* Adjusted to move form 150px to the left */
+    
+}
+
+.gen-left label {
+    margin-bottom: 10px; /* Adjust spacing as needed */
+    font-weight: bold;
+    color: #22e8b9;
+    
+}
+
+.gen-left input, .gen-left textarea {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 2px solid #000;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #87bba2;
+}
+
+/* .gen-left button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+} */
+
+.gen-left button:hover {
+    background-color: #45a049;
+}
+
+.gen-right {
+    position: absolute;
+    bottom: 0px;
+    left: 55.2%;
+}
+
+.gen-right img {
+    max-width: 120%;
+    max-height: 500px;
+    border-radius: 8px;
+}
+
+.gen-ellipse-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    background-color: #fed766;
+    color: black;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: 3px solid black;
+    border-radius: 75px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    position: relative;
+    top: 330px;
+    left: 120px;
+}
