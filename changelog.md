@@ -67,6 +67,18 @@
   - Update: New Folders frontend/public/components/src/Login added
   <br>
 
+   - `128d98a` [ParthDhavan04](https://github.com/ParthDhavan04)
+  - Feat: Conditional navbar rendering
+  - Fixes: Issue 34
+  - Update: Changes in App.js (frontend) 
+  <br>
 
+- Date 05/07/2024
+  
+  - `eea211e` [adx04](https://github.com/adx04)
+  - Feat: SignUp page created
+  - Fixes: Issue 7
+  - Update: New Folders frontend/public/components/src/SignUp added
+  <br>
    
   
