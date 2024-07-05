@@ -80,5 +80,9 @@
   - Fixes: Issue 7
   - Update: New Folders frontend/public/components/src/SignUp added
   <br>
-   
   
+  - `5b37b60` [ParthDhavan04](https://github.com/ParthDhavan04)
+  - Feat: Connection to DB
+  - Fixes: Issue 13
+  - Update: New folders in backend connectDB added
+  <br>
