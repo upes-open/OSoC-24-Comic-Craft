@@ -1,15 +1,15 @@
 .feedback-container {
     display: flex;
     justify-content:space-between;
-    padding: 20px;
+    padding: 25px;
     background-color: #2c514;
     color: #ffffff;
     position: relative;
     background-image: url('../../assets/feedback-bg.png');
     background-repeat: no-repeat;
     background-position: left bottom 0px ;
-    background-size: 220px; 
-    margin-left:0px; 
+    background-size: 190px; 
+    margin-:0px; 
 }
   
   .feedback-form {
@@ -28,7 +28,7 @@
   
   .feedback-form textarea {
     width: 70%;
-    height: 130px;
+    height: 120px;
     padding: 20px;
     margin-bottom: 10px;
     border-radius: 20px;
@@ -39,7 +39,7 @@
   }
   
   .fun-to-read, .rating {
-    margin-bottom: 16.8px;
+    margin-bottom: 17px;
     font-size: 1.2rem;
     margin-left: 40px;
     color:#22E8B9 ;
@@ -47,23 +47,23 @@
   }
  
   .rating{
-    margin-top: -110px;
+    margin-top: -115px;
     margin-left: 300px;
-    padding: 2px;
+    
   }
   
   .rating span {
     cursor: pointer;
-    font-size: 2.54em;
+    font-size: 2.5em;
     color: #ffa500;
-    padding-top: -10%;
-    margin-top: -10px;
-    padding:5px;
+    padding-top: 0px;
+    margin-top: -30px;
+    padding-left:9px;
     font-weight: 500;
   }
   
   button {
-    padding: 10px 27px;
+    padding: 10px 25px;
     margin-left: 220px;
     background-color: #d3d3d3;
     color: #000000;

@@ -30,6 +30,7 @@ const Feedback = () => {
         
         <div className="fun-to-read">
           <p>Was it fun to read?</p>
+          <br></br>
           <label>
             <input type="radio" value="yes" checked={funToRead === true} onChange={handleFunToReadChange} /> Yes
           </label>
