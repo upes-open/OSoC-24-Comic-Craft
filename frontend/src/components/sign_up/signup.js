@@ -135,18 +135,12 @@ const Signup = () => {
             {errors.username && <p className="error">{errors.username}</p>}
           </div>
 
-          <div className="form-group">
-            <label htmlFor="profilePicture">Profile Picture (optional)</label>
-            <ProfilePictureUpload
-              onChange={handleChange}
-              profilePicture={formData.profilePicture}
-            />
-          </div>
+          
           <button type="submit">Sign Up</button>
         </form>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Already have an account? <a href="#login">Login</a></p>
+        <p>Already have an account? <a href="#login">Login</a></p>
         
-        <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-----------------OR---------------</span></p>
+        <p><span>-----------------OR---------------</span></p>
         <div className="google-signup">
           <button>Sign up with </button>
         </div>
@@ -155,28 +149,7 @@ const Signup = () => {
   );
 };
 
-const ProfilePictureUpload = ({ onChange }) => {
-  const [imagePreview, setImagePreview] = useState(null);
-
-  const handleImageChange = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      let reader = new FileReader();
-      reader.onload = (event) => {
-        setImagePreview(event.target.result);
-      };
-      reader.readAsDataURL(e.target.files[0]);
-      onChange(e);
-    }
-  };
-
-  return (
-    <div className="profile-picture-upload">
-      <input type="file" accept="image/*" onChange={handleImageChange} />
-      {imagePreview && <img src={imagePreview} alt="Profile Preview" />}
-    </div>
-  );
-};
-
+  
 const Background = ({ children }) => {
   return <div className="signup-background">{children}</div>;
 };
