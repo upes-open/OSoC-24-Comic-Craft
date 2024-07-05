@@ -86,3 +86,15 @@
   - Fixes: Issue 13
   - Update: New folders in backend connectDB added
   <br>
+
+  - `91523c6` [adx04](https://github.com/adx04)
+  - Feat: Feedback 
+  - Fixes: Issue 12
+  - Update: New folders in frontend/public/components/src/Feedback added
+  <br>
+
+  - `49893d2`[ParthDhavan04](https://github.com/ParthDhavan04)
+  - Feat: User Schema
+  - Fixes: Issue 37
+  - Update: New folders in backend user schema models added
+  <br>
