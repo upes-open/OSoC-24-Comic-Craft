@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './feedback.css';
 
-
 const Feedback = () => {
   const [feedback, setFeedback] = useState('');
   const [rating, setRating] = useState(0);
@@ -49,14 +48,14 @@ const Feedback = () => {
           ))}
         </div>
         
-        <button onClick={handleSave}>SAVE</button>
+        <button className="feedback-button" onClick={handleSave}>SAVE</button>
       </div>
       
       <div className="reviews">
         <h2>Previous Users' Feedback</h2>
         {reviews.map((review, index) => (
           <div key={index} className="review">
-          </div>
+                      </div>
         ))}
       </div>
     </div>

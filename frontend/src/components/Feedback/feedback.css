@@ -1,109 +1,107 @@
 .feedback-container {
-    display: flex;
-    justify-content:space-between;
-    padding: 25px;
-    background-color: #2c514;
-    color: #ffffff;
-    position: relative;
-    background-image: url('../../assets/feedback-bg.png');
-    background-repeat: no-repeat;
-    background-position: left bottom 0px ;
-    background-size: 190px; 
-    margin-:0px; 
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
+  background-color: #2c514;
+  color: #ffffff;
+  position: relative;
+  background-image: url('../../assets/feedback-bg.png');
+  background-repeat: no-repeat;
+  background-position: left bottom 0px;
+  background-size: 190px; 
+  margin: 0px;
 }
-  
-  .feedback-form {
-    width: 40%;
-    padding: 35px;
-    color: #000000;
-    border-radius: 10px;
-  }
-  
-  .feedback-form h2 {
-    color: #22E8B9;
-    margin-top: 0px;
-    margin-left: 100px;
-    font-size: 2.5rem;
-  }
-  
-  .feedback-form textarea {
-    width: 70%;
-    height: 120px;
-    padding: 20px;
-    margin-bottom: 10px;
-    border-radius: 20px;
-    margin-left: 40px;
-    margin-top: 10px;
-    background-color: #87BBA2;
-    border: 3px solid black;
-  }
-  
-  .fun-to-read, .rating {
-    margin-bottom: 17px;
-    font-size: 1.2rem;
-    margin-left: 40px;
-    color:#22E8B9 ;
-    font-weight: 600;
-  }
- 
-  .rating{
-    margin-top: -115px;
-    margin-left: 300px;
-    
-  }
-  
-  .rating span {
-    cursor: pointer;
-    font-size: 2.5em;
-    color: #ffa500;
-    padding-top: 0px;
-    margin-top: -30px;
-    padding-left:9px;
-    font-weight: 500;
-  }
-  
-  button {
-    padding: 10px 25px;
-    margin-left: 220px;
-    background-color: #d3d3d3;
-    color: #000000;
-    font-size: 1.2rem;
-    font-family: ;
-    border: none;
-    border-radius: 20px;
-    border: 3px solid black;
-    cursor: pointer;
-    margin-top: 20px;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    font-weight: 900;
-  }
-  
-  .reviews {
-    width: 40%;
-    height: 500px;
-    align-items: center;
-    padding: 20px;
-    background-color: #d3d3d3;
-    border-radius: 10px;
-    margin-top: 30px;
-    margin-left: -10%;
-    margin-right: 10%;
+
+.feedback-form {
+  width: 40%;
+  padding: 35px;
+  color: #000000;
+  border-radius: 10px;
+}
+
+.feedback-form h2 {
+  color: #22E8B9;
+  margin-top: 0px;
+  margin-left: 100px;
+  font-size: 2.5rem;
+}
+
+.feedback-form textarea {
+  width: 70%;
+  height: 120px;
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  margin-left: 40px;
+  margin-top: 10px;
+  background-color: #87BBA2;
+  border: 3px solid black;
+}
+
+.fun-to-read, .rating {
+  margin-bottom: 17px;
+  font-size: 1.2rem;
+  margin-left: 40px;
+  color: #22E8B9;
+  font-weight: 600;
+}
+
+.rating {
+  margin-top: -115px;
+  margin-left: 300px;
+}
+
+.rating span {
+  cursor: pointer;
+  font-size: 2.5em;
+  color: #ffa500;
+  padding-top: 0px;
+  margin-top: -30px;
+  padding-left: 9px;
+  font-weight: 500;
+}
+
+.feedback-button {
+  padding: 10px 25px;
+  margin-left: 220px;
+  background-color: #d3d3d3;
+  color: #000000;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 20px;
+  border: 3px solid black;
+  cursor: pointer;
+  margin-top: 20px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-weight: 900;
+}
+
+.reviews {
+  width: 40%;
+  height: 500px;
+  align-items: center;
+  padding: 20px;
+  background-color: #d3d3d3;
+  border-radius: 10px;
+  margin-top: 30px;
+  margin-left: -10%;
+  margin-right: 10%;
 }
 
 .reviews h2 {
-    text-align: center;
-    font-size: 2rem;
-    color: #000;
+  text-align: center;
+  font-size: 2rem;
+  color: #000;
 }
 
 .review {
-    margin-bottom: 10px;
-    text-align: left center;
-    color: #000;
-    margin-top: 40px;
-    content: inherit;
+  margin-bottom: 10px;
+  text-align: left center;
+  color: #000;
+  margin-top: 40px;
+  content: inherit;
 }
 
 .review p {
-    margin: 5px 10px;
+  margin: 5px 10px;
 }
