@@ -5,6 +5,7 @@ import Generate from './components/Generate/generate'; // Ensure this path is co
 import Login from './components/Login/login'; // Import your Login component
 import Navbar from './components/Nav/Navbar';
 import Signup from './components/sign_up/signup';
+import Feedback from './components/Feedback/feedback';
 import './App.css';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/generate" element={<Generate />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/feedback" element={<Feedback />} />
       </Routes>
     </div>
   );
