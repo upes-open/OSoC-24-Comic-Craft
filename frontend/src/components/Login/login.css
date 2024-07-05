@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+body, html {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.login-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh; /* Ensure the container covers the full viewport */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #2C514C; /* Dark green background */
+}
+
+.login-image {
+    position: absolute;
+}
+
+.login-image.top-left {
+    top: 10px;
+    left: 0px;
+    height: 70%;
+    margin: 0;
+}
+
+.login-image.bottom-right {
+    bottom: 0px;
+    right: 10px;
+    height: 70%; /* Make Batman image smaller */
+}
+
+.login-heading {
+    font-size: 55px; /* Slightly smaller font size */
+    margin-top: 60px;
+    text-align: center;
+    color: #B07156;
+    font-size: 4rem;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-shadow: -3px 0px 0px #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.login-form-container {
+    text-align: center;
+    padding: 1.3rem; /* Adjusted padding */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 55%; /* Adjusted width */
+    max-width: 550px; /* Reduced max-width */
+    margin-top: 15px; /* Reduced margin-top */
+    height: 50%; /* Adjusted height */
+    background-color: #2C514C; /* Dark green background */
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Ensure form takes full width */
+}
+
+.login-input {
+    width: 100%;
+    max-width: 280px; /* Further reduced max-width */
+    margin-bottom: 12px; /* Reduced margin between inputs */
+    padding: 10px;
+    border: 2px solid #000;
+    border-radius: 8px; /* Increased border radius */
+    font-size: 0.95rem; /* Slightly smaller font size */
+    background-color: #87bba2;
+}
+
+.login-form label {
+    margin-bottom: 6px; /* Further reduced margin for labels */
+    font-weight: bold;
+    color: #22e8b9;
+    font-size: 17px; /* Further reduced font size for labels */
+}
+
+.login-button {
+    width: 22%; /* Smaller width */
+    max-width: 220px; /* Further reduced max-width */
+    padding: 0.7rem; /* Slightly smaller padding */
+    margin: 0.4rem 0;
+    background-color: #FED766;
+    color: black;
+    border: 2px solid black; /* Add black border */
+    border-radius: 8px; /* Increased border radius */
+    cursor: pointer;
+    font-size: 0.95rem; /* Slightly smaller font size */
+}
+
+.login-button:hover {
+    background-color: #9e8c55;
+}
+
+.login-extra {
+    margin-top: 0.3rem; /* Further reduced top margin */
+}
+
+.signup-text {
+    margin: 0.3rem 0;
+    color: white;
+}
+
+.signup-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+}
+
+.login-or-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.3rem 0; /* Further reduced margin */
+}
+
+.white-line {
+    width: 38%; /* Slightly reduced width */
+    margin: 0 8px; /* Reduced margin */
+}
+
+.login-or {
+    color: white;
+    font-weight: bold;
+}
+
+.google-login-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28%; /* Smaller width */
+    max-width: 220px; /* Further reduced max-width */
+    padding: 0.7rem; /* Slightly smaller padding */
+    margin: 0.4rem auto; /* Center the button */
+    background-color: #FED766;
+    color: black; /* Change text color to black to match login button */
+    border: 2px solid black; /* Add black border */
+    border-radius: 8px; /* Increased border radius */
+    cursor: pointer;
+    font-size: 0.95rem; /* Slightly smaller font size */
+}
+
+.google-login-button:hover {
+    background-color: #9e8b55; /* Match the hover color with login button */
+}
+
+.google-logo {
+    margin-left: 6px; /* Adjust the margin as needed */
+    height: 22px; /* Slightly smaller height */
+}
+
+.error-message {
+    color: red; /* Change error message color to red */
+    font-size: 0.95rem; /* Slightly smaller font size for error messages */
+    margin-top: 6px; /* Further reduced margin top for error messages */
+}

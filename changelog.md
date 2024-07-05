@@ -55,6 +55,18 @@
   - Update: New Folders frontend/public/components/src/Navbar added
   <br>
 
+  - `b193a3c` [ParthDhavan04](https://github.com/ParthDhavan04)
+  - Feat: Generate comic page created
+  - Fixes: Issue 10
+  - Update: New Folders frontend/public/components/src/Generate added
+  <br>
+
+   - `bea06d3` [ParthDhavan04](https://github.com/ParthDhavan04)
+  - Feat: Login page created
+  - Fixes: Issue 6
+  - Update: New Folders frontend/public/components/src/Login added
+  <br>
+
 
    
   
