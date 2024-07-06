@@ -98,3 +98,19 @@
   - Fixes: Issue 37
   - Update: New folders in backend user schema models added
   <br>
+
+- Date 06/07/2024
+
+   - `b262ec0` [Saga690](https://github.com/Saga690)
+  - Feat: SignUp API
+  - Fixes: Issue 41
+  - Update: app.js backend and signup pages in frontend modified
+  <br>
+
+   - `f229adc` [ParthDhavan04](https://github.com/ParthDhavan04)
+  - Feat: Integration of frontend and backend SignUp API
+  - Fixes: Issue 42
+  - Update: app.js, models in backend and signup pages in frontend modified
+  <br>
+
+  
