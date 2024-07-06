@@ -1,59 +1,52 @@
 const express = require('express');
 const { connectToDb } = require('./connectDB/connect');
 const User = require('./models/user');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+const cors=require("cors")
 const app = express();
-const port = 3000;
+const port = 4000;
 
-app.get('/', (req, res) => {
-    res.send("Hello World");
-});
-
+// Middleware to parse JSON bodies
 app.use(express.json());
+app.use(cors());
 
+// Route to handle user signup
+app.post('/signup', async (req, res) => {
+  try {
+    const { firstName, lastName, email, password, gender, username, profilePicture } = req.body;
 
-app.post("/signup", async (req, res) => {
-    let { firstName, lastName, email, password, gender, username } = req.body;
+    // Check if email or username already exists (optional step)
 
-    if (!firstName || !lastName || !email || !password || !gender || !username) {
-        return res.status(400).send('All required fields must be filled');
-    }
+    // Create a new user instance
+    const newUser = new User({
+      firstName,
+      lastName,
+      email,
+      password,  // Ensure this is hashed before saving (using bcrypt, for example)
+      gender,
+      username,
+      profilePicture,
+    });
 
-    console.log('Signup data:', req.body);
+    // Save the user to the database
+    const savedUser = await newUser.save();
 
-    try {
-
-        const existingUser = await User.findOne({ email });
-        if (existingUser) {
-            return res.status(400).send('User with the same email or contact already exists');
-        }
-
-        const salt = await bcrypt.genSalt(10);
-        const hash = await bcrypt.hash(password, salt);
-
-        const user = await userModel.create({
-            firstName,
-            lastName,
-            email,
-            password: hash,
-            gender,
-            username
-        });
-
-        const token = jwt.sign({ email }, "tokenGoesHere");
-        res.cookie("token", token);
-
-        // res.status(201).redirect('dashboard/' + username);
-        res.status(201).json({ message: "User registered successfully" })
-    } catch (err) {
-        res.status(500).send(err.message);
-    }
+    res.status(201).json(savedUser); // Respond with the saved user object
+  } catch (error) {
+    console.error('Error creating user:', error);
+    res.status(500).json({ error: 'Failed to create user' });
+  }
 });
 
+// Default route
+app.get('/', (req, res) => {
+  res.send("Hello World");
+});
 
 // Start the server
 app.listen(port, () => {
-    connectToDb();
-    console.log(`Server is running at http://localhost:${port}`);
+  connectToDb()
+    .then(() => {
+      console.log(`Server is running at http://localhost:${port}`);
+    })
+    .catch((err) => console.error('Error connecting to MongoDB:', err));
 });

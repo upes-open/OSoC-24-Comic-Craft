@@ -24,37 +24,56 @@ const Signup = () => {
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.firstName) newErrors.firstName = 'First Name is required';
-    if (!formData.lastName) newErrors.lastName = 'Last Name is required';
-    if (!formData.email) newErrors.email = 'Email is required';
-    if (!formData.password) newErrors.password = 'Password is required';
+    if (!formData.firstName.trim()) newErrors.firstName = 'First Name is required';
+    if (!formData.lastName.trim()) newErrors.lastName = 'Last Name is required';
+    if (!formData.email.trim()) newErrors.email = 'Email is required';
+    if (!formData.password.trim()) newErrors.password = 'Password is required';
     if (!formData.gender) newErrors.gender = 'Gender is required';
-    if (!formData.username) newErrors.username = 'Username is required';
+    if (!formData.username.trim()) newErrors.username = 'Username is required';
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
-      // Handle form submission
-      console.log(formData);
-      // Reset form
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        gender: '',
-        username: '',
-        profilePicture: null,
-      });
-      setErrors({});
+      try {
+        // Send form data to backend on port 4000
+        const response = await fetch('http://localhost:4000/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+  
+        if (!response.ok) {
+          throw new Error('Failed to submit form');
+        }
+  
+        // Reset form and show success alert
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          password: '',
+          gender: '',
+          username: '',
+          profilePicture: null,
+        });
+        setErrors({});
+        alert('Signup successful!'); // You can replace this with a more user-friendly notification
+  
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        // Handle error state or show an error alert
+        alert('Failed to sign up. Please try again later.');
+      }
     }
   };
-
+  
   return (
     <Background>
       <div className="create-account-form">
@@ -135,10 +154,9 @@ const Signup = () => {
             {errors.username && <p className="error">{errors.username}</p>}
           </div>
 
-          
           <button type="submit">Sign Up</button>
         </form>
-        <p>Already have an account? <a href="#login">Login</a></p>
+        <p>Already have an account? <a href="/login">Login</a></p>
         
         <p><span>-----------------OR---------------</span></p>
         <div className="google-signup">
@@ -149,7 +167,6 @@ const Signup = () => {
   );
 };
 
-  
 const Background = ({ children }) => {
   return <div className="signup-background">{children}</div>;
 };
