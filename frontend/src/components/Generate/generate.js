@@ -3,6 +3,7 @@
 import React from 'react';
 import './generate.css'; // Assuming you already have this CSS file
 import Right from '../../assets/right.png';
+import axios from "axios";
 
 const Generate = () => {
   return (
@@ -22,7 +23,7 @@ const Generate = () => {
             <label htmlFor="gen-style">Comic Style:</label>
             <input type="text" id="gen-style" name="gen-style" required />
             
-            {/* <button type="submit">Submit</button> */}
+            <button onClick={generateAnswer} className="genDialogue" type="submit">Generate dialogue</button> 
           </form>
         </div>
       </div>
@@ -35,5 +36,16 @@ const Generate = () => {
     </div>
   );
 };
+
+async function generateAnswer(){
+  console.log("Loading...");
+  const response = await axios({
+    url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyB68wXRo-zlmJda3cps-8r0qYqqjjnD7Pw",
+    method: "post",
+    data: {"contents":[{"parts":[{"text":"Explain how AI works"}]}]}
+  })
+  console.log(response);
+}
+
 
 export default Generate;

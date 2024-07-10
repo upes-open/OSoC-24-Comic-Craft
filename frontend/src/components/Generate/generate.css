@@ -92,6 +92,14 @@
     border-radius: 8px;
 }
 
+.genDialogue{
+    background-color: #87bba2;
+    padding: 14px;
+    border: 2px solid #000;
+    font-weight: 500;
+    font-size: medium;
+}
+
 .gen-ellipse-button {
     display: flex;
     justify-content: center;
