@@ -113,4 +113,18 @@
   - Update: app.js, models in backend and signup pages in frontend modified
   <br>
 
+- Date 08/07/2024
+
+   - `183038a` [ParthDhavan04](https://github.com/ParthDhavan04)
+  - Feat: Login API
+  - Fixes: Issue 46
+  - Update: app.js backend and login pages modified
+  <br>
+
+   - `183038a` [ParthDhavan04](https://github.com/ParthDhavan04)
+  - Feat: Integration of frontend and backend Login API
+  - Fixes: Issue 14
+  - Update: app.js, backend and login pages in frontend modified
+  <br>
+  
   
