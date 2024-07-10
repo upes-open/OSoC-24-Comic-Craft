@@ -52,6 +52,8 @@ Many writers and storytellers struggle to bring their narratives to life in a vi
     ```
 4. **Wait for the code review and pull request merge.**
 
+  ![Alt](https://repobeats.axiom.co/api/embed/cdf3eb857d7c04b27aad49439633b657d57c8678.svg "Repobeats analytics image")
+
 ## Rules
 
 1. **There are 3 levels of issue difficulty:**
