@@ -1,11 +1,24 @@
 // src/components/Generate/ComicCreator.js
-
-import React from 'react';
+import React, { useState } from 'react';
 import './generate.css'; // Assuming you already have this CSS file
 import Right from '../../assets/right.png';
 import axios from "axios";
 
+
 const Generate = () => {
+
+  const [question, setQuestion] = useState("");
+
+  async function generateAnswer(){
+    console.log("Loading...");
+    const response = await axios({
+      url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyB68wXRo-zlmJda3cps-8r0qYqqjjnD7Pw",
+      method: "post",
+      data: {"contents":[{"parts":[{"text": question}]}]}
+    })
+    console.log(response['data']['candidates'][0]['content']['parts'][0]["text"]);
+  }
+  
   return (
     <div className="gen-container">
       <header className='gen-h'>
@@ -18,7 +31,8 @@ const Generate = () => {
             <input type="email" id="gen-email" name="gen-email" required />
 
             <label htmlFor="gen-storyline">Storyline:</label>
-            <textarea id="gen-storyline" name="gen-storyline" rows="5" required></textarea>
+            <textarea value={question} onChange={(e)=> setQuestion(e.target.value)}
+            id="gen-storyline" name="gen-storyline" rows="5" required></textarea>
 
             <label htmlFor="gen-style">Comic Style:</label>
             <input type="text" id="gen-style" name="gen-style" required />
@@ -37,15 +51,9 @@ const Generate = () => {
   );
 };
 
-async function generateAnswer(){
-  console.log("Loading...");
-  const response = await axios({
-    url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyB68wXRo-zlmJda3cps-8r0qYqqjjnD7Pw",
-    method: "post",
-    data: {"contents":[{"parts":[{"text":"Explain how AI works"}]}]}
-  })
-  console.log(response['data']['candidates'][0]['content']['parts'][0]["text"]);
-}
+
+
+
 
 
 export default Generate;
