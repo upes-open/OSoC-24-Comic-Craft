@@ -44,7 +44,7 @@ async function generateAnswer(){
     method: "post",
     data: {"contents":[{"parts":[{"text":"Explain how AI works"}]}]}
   })
-  console.log(response);
+  console.log(response['data']['candidates'][0]['content']['parts'][0]["text"]);
 }
 
 
