@@ -4,6 +4,7 @@ const User = require("./models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
+const comicRoutes = require("./routes/comicRoutes");
 
 const app = express();
 const port = 4000;
