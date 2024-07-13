@@ -126,5 +126,19 @@
   - Fixes: Issue 14
   - Update: app.js, backend and login pages in frontend modified
   <br>
+
+  - Date 11/07/2024
+
+   - `5cdf33c` [ParthDhavan04](https://github.com/ParthDhavan04)
+  - Feat: Dialogue Generation API
+  - Fixes: Issue 15
+  - Update: generate.js in frontend modified
+  <br>
+
+   - `8621e47` [ParthDhavan04](https://github.com/ParthDhavan04)
+  - Feat: Targeted Display of API response
+  - Fixes: Issue 49
+  - Update: generate.js modified
+  <br>
   
   
