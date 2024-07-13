@@ -140,5 +140,19 @@
   - Fixes: Issue 49
   - Update: generate.js modified
   <br>
+
+- Date 13/07/2024
+
+   - `a56a580` [ParthDhavan04](https://github.com/ParthDhavan04)
+  - Feat: Custom Storyline from User
+  - Fixes: Issue 50
+  - Update: generate.js in frontend modified
+  <br>
+
+   - `aea2520` [rampantvoid](https://github.com/rampantvoid)
+  - Feat: Comic Art Generation Integration
+  - Fixes: Issue 16
+  - Update: services/tensorartservice , controllers/comicController and various files created in backend
+  <br>
   
   
