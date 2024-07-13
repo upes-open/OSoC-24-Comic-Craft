@@ -127,7 +127,7 @@
   - Update: app.js, backend and login pages in frontend modified
   <br>
 
-  - Date 11/07/2024
+- Date 11/07/2024
 
    - `5cdf33c` [ParthDhavan04](https://github.com/ParthDhavan04)
   - Feat: Dialogue Generation API
