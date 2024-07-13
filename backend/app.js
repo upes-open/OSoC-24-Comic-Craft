@@ -1,22 +1,24 @@
-const express = require('express');
-const { connectToDb } = require('./connectDB/connect');
-const User = require('./models/user');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const cors = require('cors');
+const express = require("express");
+const { connectToDb } = require("./connectDB/connect");
+const User = require("./models/user");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const cors = require("cors");
 
 const app = express();
 const port = 4000;
 
 // Set JWT secret directly in the code
-const JWT_SECRET = 'your_jwt_secret_here'; // Replace 'your_jwt_secret_here' with your actual secret
+const JWT_SECRET = "your_jwt_secret_here"; // Replace 'your_jwt_secret_here' with your actual secret
 
 // Middleware to parse JSON bodies
 app.use(express.json());
-app.use(cors({
-  origin: 'http://localhost:3000', // Allow requests from this origin
-  credentials: true  // Allow sending cookies with requests
-}));
+app.use(
+  cors({
+    origin: "http://localhost:3000", // Allow requests from this origin
+    credentials: true, // Allow sending cookies with requests
+  })
+);
 
 // Middleware to protect routes
 const authenticateToken = (req, res, next) => {
@@ -30,15 +32,28 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
+// Api for comic generation
+app.use("/comic", comicRoutes);
+
 // Route to handle user signup
-app.post('/signup', async (req, res) => {
+app.post("/signup", async (req, res) => {
   try {
-    const { firstName, lastName, email, password, gender, username, profilePicture } = req.body;
+    const {
+      firstName,
+      lastName,
+      email,
+      password,
+      gender,
+      username,
+      profilePicture,
+    } = req.body;
 
     // Check if email or username already exists
     const existingUser = await User.findOne({ $or: [{ email }, { username }] });
     if (existingUser) {
-      return res.status(400).json({ error: 'Email or username already exists' });
+      return res
+        .status(400)
+        .json({ error: "Email or username already exists" });
     }
 
     // Create a new user instance
@@ -57,8 +72,8 @@ app.post('/signup', async (req, res) => {
 
     res.status(201).json(savedUser); // Respond with the saved user object
   } catch (error) {
-    console.error('Error creating user:', error);
-    res.status(500).json({ error: 'Failed to create user' });
+    console.error("Error creating user:", error);
+    res.status(500).json({ error: "Failed to create user" });
   }
 });
 
@@ -82,10 +97,15 @@ app.post("/login", async (req, res) => {
     }
 
     // Generate JWT token
-    const token = jwt.sign({ username: user.username }, JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ username: user.username }, JWT_SECRET, {
+      expiresIn: "1h",
+    });
 
     // Set token as cookie (secure httpOnly cookie)
-    res.cookie("token", token, { httpOnly: true }).status(200).json({ message: "Login successful" });
+    res
+      .cookie("token", token, { httpOnly: true })
+      .status(200)
+      .json({ message: "Login successful" });
   } catch (err) {
     console.error("Login error:", err);
     res.status(500).json({ error: "Internal Server Error" });
@@ -93,12 +113,12 @@ app.post("/login", async (req, res) => {
 });
 
 // Protected route example
-app.get('/protected', authenticateToken, (req, res) => {
-  res.json({ message: 'This is a protected route', user: req.user });
+app.get("/protected", authenticateToken, (req, res) => {
+  res.json({ message: "This is a protected route", user: req.user });
 });
 
 // Default route
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
@@ -108,5 +128,5 @@ app.listen(port, () => {
     .then(() => {
       console.log(`Server is running at http://localhost:${port}`);
     })
-    .catch((err) => console.error('Error connecting to MongoDB:', err));
+    .catch((err) => console.error("Error connecting to MongoDB:", err));
 });

@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "d73110b9-458c-4a68-a532-1399d0ee0acc",
+		"name": "comic-art",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16829990"
+	},
+	"item": [
+		{
+			"name": "http://localhost:4000/comic/generate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"artStyle\": \"cartoon\",\n    \"pages\": [\n        {\n            \"scenes\": [\n                \"A superman cat sitting on a windowsill\",\n                \"The superman cat prepares for take off\"\n            ]\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/comic/generate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"comic",
+						"generate"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:4000/comic/generate",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"artStyle\": \"cartoon\",\n    \"pages\": [\n        {\n            \"scenes\": [\n                \"A superman cat sitting on a windowsill\",\n                \"The superman cat prepares for take off\"\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/comic/generate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"comic",
+								"generate"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://localhost:3000"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "921"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"399-18+8In5x80Lk8MPS3pC9jY3bAAY\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 13 Jul 2024 07:44:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"pages\": [\n        [\n            \"https://tams-resource-sf-sig.7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/resource-upload/short-term/2024-07-13/COMFY/images/749835370862114056_0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0bef8a003dc93fc4d7030c9da79271ff%2F20240713%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20240713T074422Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&x-id=GetObject&X-Amz-Signature=cb74acf4ad30ca0986a7291954b9be94399f6db67b53de904de0310eb452f5e0\",\n            \"https://tams-resource-sf-sig.7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/resource-upload/short-term/2024-07-13/COMFY/images/749835418106754468_0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0bef8a003dc93fc4d7030c9da79271ff%2F20240713%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20240713T074428Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&x-id=GetObject&X-Amz-Signature=08b615e04149683dba3646f33739164199ec0536774c8d3ead245cf7123d42f4\"\n        ]\n    ]\n}"
+				}
+			]
+		}
+	]
+}
