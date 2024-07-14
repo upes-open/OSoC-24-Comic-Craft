@@ -155,4 +155,8 @@
   - Update: services/tensorartservice , controllers/comicController and various files created in backend
   <br>
   
-  
+     - `068f434` [ParthDhavan04](https://github.com/ParthDhavan04)
+  - Feat: Tensor Art React integration
+  - Fixes: Issue 55
+  - Update: comichar.js file created in frontend
+  <br>
