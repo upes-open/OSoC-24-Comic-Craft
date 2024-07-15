@@ -1,4 +1,4 @@
-// src/components/Generate/ComicCreator.js
+// src/components/Generate/generate.js
 import React, { useState } from 'react';
 import './generate.css'; // Assuming you already have this CSS file
 import Right from '../../assets/right.png';
@@ -9,14 +9,19 @@ const Generate = () => {
 
   const [question, setQuestion] = useState("");
 
-  async function generateAnswer(){
+  async function generateAnswer(e){
+    e.preventDefault(); // Prevent the form from submitting
     console.log("Loading...");
-    const response = await axios({
-      url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyB68wXRo-zlmJda3cps-8r0qYqqjjnD7Pw",
-      method: "post",
-      data: {"contents":[{"parts":[{"text": question}]}]}
-    })
-    console.log(response['data']['candidates'][0]['content']['parts'][0]["text"]);
+    try {
+      const response = await axios({
+        url: "http://localhost:4000/generate-dialogue",
+        method: "post",
+        data: { question }
+      });
+      console.log(response.data.generatedText);
+    } catch (error) {
+      console.error("Error generating answer:", error);
+    }
   }
   
   return (
@@ -50,10 +55,5 @@ const Generate = () => {
     </div>
   );
 };
-
-
-
-
-
 
 export default Generate;

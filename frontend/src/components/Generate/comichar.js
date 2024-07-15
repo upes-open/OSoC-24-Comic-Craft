@@ -11,7 +11,8 @@ function CharGenerator() {
         pages: [
           {
             scenes: [
-              'a 9 year old girl with blue eyes and curly hair walking in a jungle'
+              'a man with blue hair was standing near a tree',
+              'the tree fell on the man'
             ]
           }
         ]

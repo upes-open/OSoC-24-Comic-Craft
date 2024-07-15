@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const comicRoutes = require("./routes/comicRoutes");
+const generateDialogue = require("./routes/generateDialogues");
 
 const app = express();
 const port = 4000;
@@ -35,6 +36,9 @@ const authenticateToken = (req, res, next) => {
 
 // Api for comic generation
 app.use("/comic", comicRoutes);
+
+// Api for dialogue generation
+app.use("/generate-dialogue", generateDialogue); // Use the new route
 
 // Route to handle user signup
 app.post("/signup", async (req, res) => {
