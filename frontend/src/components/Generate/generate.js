@@ -8,16 +8,6 @@ import axios from "axios";
 const Generate = () => {
 
   const [question, setQuestion] = useState("");
-
-  async function generateAnswer(){
-    console.log("Loading...");
-    const response = await axios({
-      url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyB68wXRo-zlmJda3cps-8r0qYqqjjnD7Pw",
-      method: "post",
-      data: {"contents":[{"parts":[{"text": question}]}]}
-    })
-    console.log(response['data']['candidates'][0]['content']['parts'][0]["text"]);
-  }
   
   return (
     <div className="gen-container">
@@ -37,7 +27,7 @@ const Generate = () => {
             <label htmlFor="gen-style">Comic Style:</label>
             <input type="text" id="gen-style" name="gen-style" required />
             
-            <button onClick={generateAnswer} className="genDialogue" type="submit">Generate dialogue</button> 
+            <button  className="genDialogue" type="submit">Generate dialogue</button> 
           </form>
         </div>
       </div>
