@@ -1,4 +1,4 @@
-// src/components/Generate/ComicCreator.js
+// src/components/Generate/generate.js
 import React, { useState } from 'react';
 import './generate.css'; // Assuming you already have this CSS file
 import Right from '../../assets/right.png';
@@ -8,6 +8,21 @@ import axios from "axios";
 const Generate = () => {
 
   const [question, setQuestion] = useState("");
+
+  async function generateAnswer(e){
+    e.preventDefault(); // Prevent the form from submitting
+    console.log("Loading...");
+    try {
+      const response = await axios({
+        url: "http://localhost:4000/generate-dialogue",
+        method: "post",
+        data: { question }
+      });
+      console.log(response.data.generatedText);
+    } catch (error) {
+      console.error("Error generating answer:", error);
+    }
+  }
   
   return (
     <div className="gen-container">
@@ -27,7 +42,7 @@ const Generate = () => {
             <label htmlFor="gen-style">Comic Style:</label>
             <input type="text" id="gen-style" name="gen-style" required />
             
-            <button  className="genDialogue" type="submit">Generate dialogue</button> 
+            <button onClick={generateAnswer} className="genDialogue" type="submit">Generate dialogue</button> 
           </form>
         </div>
       </div>
@@ -40,10 +55,5 @@ const Generate = () => {
     </div>
   );
 };
-
-
-
-
-
 
 export default Generate;
