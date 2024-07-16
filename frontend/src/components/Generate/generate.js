@@ -10,9 +10,16 @@ import gendown from '../../assets/gen-down.png';
 const Generate = () => {
 
   const [selectedTab, setSelectedTab] = useState('');
+  const [numCharacters, setNumCharacters] = useState(1);
+
   const handleTabClick = (tab) => {
     setSelectedTab(tab);
   };
+
+  const handleNumCharactersChange = (e) => {
+    setNumCharacters(parseInt(e.target.value));
+  };
+
   const [question, setQuestion] = useState("");
 
   async function generateAnswer(e) {
@@ -60,7 +67,30 @@ const Generate = () => {
               <button onClick={generateAnswer} className="genDialogue" id="gdialogue" type="submit">Generate dialogue</button>
             </form>
           }
-          {selectedTab === 'tab2' && <p>Header 2 Content</p>}
+
+
+          {selectedTab === 'tab2' &&
+            (
+              <div>
+                <label htmlFor="num-characters">Number of Characters:</label>
+                <select id="num-characters" onChange={handleNumCharactersChange}>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+
+                <div id="character-inputs">
+                  {[...Array(numCharacters)].map((_, i) => (
+                    <div key={i} className="character-row">
+                      <input type="text" placeholder="Character Name" className="name-input" />
+                      <input type="text" placeholder="Character Description" className="description-input" />
+                    </div>
+                  ))}
+                  <button id="gen-char-save"> Create character/s </button>
+                </div>
+              </div>
+            )}
+
           {selectedTab === 'tab3' && <p>Header 3 Content</p>}
         </div>
       </div>
@@ -70,7 +100,7 @@ const Generate = () => {
           <div className="box-wrapper">
             <h2 className="box-heading">View in Browser</h2>
             <div className="box">
-              <img src={genpreview} alt=''/>
+              <img src={genpreview} alt='' />
             </div>
           </div>
           <div className="box-wrapper">
