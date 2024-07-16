@@ -1,183 +1,244 @@
 .gen-container {
-    display: flex;
-    height: 89vh;
-    overflow: hidden; /* Hide overflow to prevent page scrolling */
-  }
-  
-  .gen-left {
-    width: 40%;
-    overflow-y: hidden; /* Enable vertical scrollbar for content overflow */
-    padding: 20px;
-    border-right: 1px solid #ccc; /* Divider line between left and right */
-  }
-  
-  .gen-head {
-    position: relative;
-    margin-left: 40px;
-    font-size: 2.0rem;
-    font-weight: bolder;
-    color: #fed766;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    text-shadow: -3px 0px 0px #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  display: flex;
+  height: 89vh;
+  overflow: hidden; /* Hide overflow to prevent page scrolling */
+}
+
+.gen-left {
+  width: 40%;
+  overflow-y: hidden; /* Enable vertical scrollbar for content overflow */
+  padding: 20px;
+  border-right: 1px solid #ccc; /* Divider line between left and right */
+}
+
+.gen-head {
+  position: relative;
+  margin-left: 40px;
+  font-size: 2.0rem;
+  font-weight: bolder;
+  color: #fed766;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-shadow: -3px 0px 0px #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .boxes-container {
-  display: flex;
-  justify-content: center; /* Center align the boxes horizontally */
-  align-items: flex-start; /* Align items to the start vertically */
-  margin-top: 20px; /* Space between the main heading and the boxes */
+display: flex;
+justify-content: center; /* Center align the boxes horizontally */
+align-items: flex-start; /* Align items to the start vertically */
+margin-top: 20px; /* Space between the main heading and the boxes */
 }
 
 .box-wrapper {
-  display: flex;
-  flex-direction: column; /* Align items vertically */
-  align-items: center; /* Center align the content inside the box */
-  margin: 0 50px; /* Space between the boxes */
+display: flex;
+flex-direction: column; /* Align items vertically */
+align-items: center; /* Center align the content inside the box */
+margin: 0 50px; /* Space between the boxes */
 }
 
 .box-heading {
-  margin-bottom: 10px; /* Space between heading and box */
-  font-size: 1.2em;
+margin-bottom: 10px; /* Space between heading and box */
+font-size: 1.2em;
 }
 
 .box {
-  width: 130px; /* Width of the boxes */
-  height: 35px; /* Height of the boxes */
-  display: flex;
-  justify-content: center; /* Center align the icon inside the box */
-  align-items: center;
-  border: 2px solid #000; /* Border for the boxes */
-  border-radius: 10px; /* Rounded corners */
-  background-color: #87bba2; /* Background color */
-  padding: 10px; /* Padding inside the box */
-  text-align: center; /* Center align text inside the box */
-  cursor: pointer;
+width: 130px; /* Width of the boxes */
+height: 35px; /* Height of the boxes */
+display: flex;
+justify-content: center; /* Center align the icon inside the box */
+align-items: center;
+border: 2px solid #000; /* Border for the boxes */
+border-radius: 10px; /* Rounded corners */
+background-color: #87bba2; /* Background color */
+padding: 10px; /* Padding inside the box */
+text-align: center; /* Center align text inside the box */
+cursor: pointer;
 }
 
 
 .generatebg{
-  width: 59.7%; 
-  height: 35%;
-  position: absolute;
-  top: 45%;
-  right: 0%; 
+width: 59.7%; 
+height: 35%;
+position: absolute;
+top: 45%;
+right: 0%; 
 }
 
-
-#gdialogue{
-    width: 65%;
-    margin-top: 20px;
-    background-color: #838282;
-  }
-
-  
 .gen-button{
-  position: absolute;
-  top: 85%;
-  right: 25%;
-  width: 200px; 
-  height: 35px; 
-  padding-bottom: 3px;
-  border: 2px solid #000;
-  border-radius: 10px; 
-  background-color: #fed766;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-  font-weight: 700;
-  padding: 6px;
-  cursor: pointer;
+position: absolute;
+top: 85%;
+right: 25%;
+width: 200px; 
+height: 35px; 
+padding-bottom: 3px;
+border: 2px solid #000;
+border-radius: 10px; 
+background-color: #fed766;
+font-family: 'Comic Sans MS', cursive, sans-serif;
+font-weight: 700;
+padding: 6px;
+cursor: pointer;
 }
 
 
-  .gen-navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1; /* Ensure navbar stays above scrollable content */
-    background-color: #838282; /* Optional: Background color for navbar */
-    display: flex;
-    justify-content: space-between; /* Arrange items horizontally with space between */
-    padding-bottom: 10px; /* Optional: Space below headers */
-  }
-  .gen-nav-item {
-    padding: 4px;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-  }
+.gen-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1; /* Ensure navbar stays above scrollable content */
+  background-color: #838282; /* Optional: Background color for navbar */
+  display: flex;
+  justify-content: space-between; /* Arrange items horizontally with space between */
+  padding-bottom: 10px; /* Optional: Space below headers */
+}
+.gen-nav-item {
+  padding: 4px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.gen-left form {
+  display: flex;
+  flex-direction: column;
+  margin-left: 25px; /* Adjusted to move form 150px to the left */
   
-  .gen-left form {
-    display: flex;
-    flex-direction: column;
-    margin-left: 25px; /* Adjusted to move form 150px to the left */
-    
 }
 
 .gen-left label {
-    margin-bottom: 10px; /* Adjust spacing as needed */
-    font-weight: bold;
-    color: #22e8b9;
-    
+  margin-bottom: 10px; /* Adjust spacing as needed */
+  font-weight: bold;
+  color: #22e8b9;
+  
 }
 
 
 
 .gen-left input, .gen-left textarea , .genDialogue{
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 2px solid #000;
-    border-radius: 4px;
-    font-size: 1rem;
-    background-color: #87bba2;
-    width: 60%;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #87bba2;
+  width: 60%;
 }
 
 #gdialogue{
-  width: 65%;
-  margin-top: 20px;
-  background-color: #838282;
+width: 65%;
+margin-top: 20px;
+background-color: #838282;
 }
 
 
-  .gen-nav-item.active {
-    border-bottom-color: #fed766; 
-  }
-  
-  .gen-scrollable-content {
-    padding-right: 20px; /* Compensate for scrollbar width */
-    margin-top: 20px; /* Space below navbar */
-    max-height: calc(89vh - 40px); /* Adjusted to fit remaining height minus navbar and margin */
-    overflow-y: auto; /* Enable scroll if content exceeds height */
-  }
-  
-  .gen-right {
-    width: 60%;
-    padding: 20px;
-    position: relative;
-  }
-  
-  .gen-right img {
-    max-width: 100%;
-    height: auto;
-  }
+.gen-nav-item.active {
+  border-bottom-color: #fed766; 
+}
 
-  #character-inputs input{
-    width: 30%;
-    margin: 10px;
-  }
+.gen-scrollable-content {
+  padding-right: 20px; /* Compensate for scrollbar width */
+  margin-top: 20px; /* Space below navbar */
+  max-height: calc(89vh - 40px); /* Adjusted to fit remaining height minus navbar and margin */
+  overflow-y: auto; /* Enable scroll if content exceeds height */
+}
 
-  #character-inputs .character-row .description-input {
-    width: 300px; /* Change this value to your desired width */
-  }
+.gen-right {
+  width: 60%;
+  padding: 20px;
+  position: relative;
+}
 
-  #gen-char-save{
-    margin-top: 25px;
-    margin: 10px;
-    padding: 10px;
-    border: 2px solid #000;
-    border-radius: 4px;
-    font-size: 1rem;
-    background-color: #838282;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    
-    cursor: pointer;
-  }
+.gen-right img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+#character-inputs input{
+  width: 30%;
+  margin: 10px;
+}
+
+#character-inputs .character-row .description-input {
+  width: 300px; /* Change this value to your desired width */
+}
+
+#gen-char-save{
+  margin-top: 25px;
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #838282;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  
+  cursor: pointer;
+}
+
+.scene-manager {
+  margin-top: 20px; /* Adjust as necessary */
+  overflow: hidden; /* Ensure content doesn't overflow */
+}
+
+.scene-container {
+  margin-bottom: 20px; /* Space between scenes */
+}
+
+
+.scene-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.scene-heading {
+  margin-right: 10px;
+}
+
+.add-button {
+  border: none;
+  border-radius: 50%;
+  background-color: #fff;
+  color: #000;
+  font-size: 1.5em;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
+  background-color: gray;
+}
+
+.scene-textbox {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+#gen-sceneinfo {
+  width: 40%;
+  margin-top: 10px; /* Adjust top margin as needed */
+  padding: 10px; /* Padding inside the button */
+  border: 2px solid #000; /* Border style */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 1rem; /* Font size */
+  background-color: #838282; /* Background color */
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* Font family */
+  cursor: pointer; /* Cursor style */
+  margin-bottom: 60px;
+}
+
+.gen-scrollable-content {
+  padding-right: 20px; /* Compensate for scrollbar width */
+  margin-top: 20px; /* Space below navbar */
+  max-height: calc(89vh - 40px); /* Adjusted to fit remaining height minus navbar and margin */
+  overflow-y: auto; /* Enable scroll if content exceeds height */
+}
