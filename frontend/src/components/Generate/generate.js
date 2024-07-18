@@ -3,31 +3,95 @@ import './generate.css';
 import generatebg from '../../assets/generatebg.png';
 import genpreview from '../../assets/gen-preview.png';
 import gendown from '../../assets/gen-down.png';
+import axios from "axios";
 
 const Generate = () => {
-  const [selectedTab, setSelectedTab] = useState(''); // State to track selected tab content
+  const [question, setQuestion] = useState("");
+  const [selectedTab, setSelectedTab] = useState('');
   const [numCharacters, setNumCharacters] = useState(1);
+  const [characters, setCharacters] = useState([]);
+  const [scenes, setScenes] = useState([{ id: 1, heading: 'Scene 1', details: '' }]);
+
   const handleTabClick = (tab) => {
     setSelectedTab(tab);
   };
 
   const handleNumCharactersChange = (e) => {
-    setNumCharacters(parseInt(e.target.value));
+    const num = parseInt(e.target.value);
+    setNumCharacters(num);
+    setCharacters(Array(num).fill({ name: '', description: '' }));
   };
 
+  const handleCharacterChange = (index, field, value) => {
+    const updatedCharacters = characters.map((char, i) =>
+      i === index ? { ...char, [field]: value } : char
+    );
+    setCharacters(updatedCharacters);
+  };
+
+  // const resetCharacters = () => {
+  //   setCharacters(Array(numCharacters).fill({ name: '', description: '' }));
+  // };
+
+  const handleCharacterSave = () => {
+    // Log scenes array before replacement
+    //console.log('Scenes before replacement:', scenes);
+
+    // Iterate through scenes and characters to replace names with descriptions
+    const updatedScenes = scenes.map((scene) => {
+      let updatedDetails = scene.details;
+      characters.forEach((char) => {
+        updatedDetails = updatedDetails.replace(new RegExp(char.name, 'g'), char.description);
+      });
+      return { ...scene, details: updatedDetails };
+    });
+
+    // Log scenes array after replacement
+    // console.log('Scenes after replacement:', updatedScenes);
+
+    // Update state with the modified scenes
+    //setScenes(updatedScenes);
+    alert('Character information saved')
+  };
+
+  const addScene = () => {
+    if (scenes.length >= 6) return;
+    const newId = scenes.length + 1;
+    setScenes([...scenes, { id: newId, heading: `Scene ${newId}`, details: '' }]);
+  };
+
+  const handleSceneChange = (index, value) => {
+    const updatedScenes = scenes.map((scene, i) =>
+      i === index ? { ...scene, details: value } : scene
+    );
+    setScenes(updatedScenes);
+  };
+
+  const handleSave = () => {
+    // Log scenes array before replacement
+    console.log('Scenes before replacement:', scenes);
+
+    // Iterate through scenes and characters to replace names with descriptions
+    const updatedScenes = scenes.map((scene) => {
+      let updatedDetails = scene.details;
+      characters.forEach((char) => {
+        updatedDetails = updatedDetails.replace(new RegExp(char.name, 'g'), char.description);
+      });
+      return { ...scene, details: updatedDetails };
+    });
+
+    alert('Scenes saved');
+    // Log scenes array after replacement
+    console.log('Scenes after replacement:', updatedScenes);
+
+    // Update state with the modified scenes
+    //setScenes(updatedScenes);
+  };
 
   const SceneManager = () => {
-    const [scenes, setScenes] = useState([{ id: 1, heading: 'Scene 1' }]);
-  
-    const addScene = () => {
-      if (scenes.length >= 6) return; // Prevent adding more than 6 scenes
-      const newId = scenes.length + 1;
-      setScenes([...scenes, { id: newId, heading: `Scene ${newId}` }]);
-    };
-  
     return (
       <div className="scene-manager">
-        {scenes.map((scene) => (
+        {scenes.map((scene, index) => (
           <div key={scene.id} className="scene-container">
             <div className="scene-header">
               <h2 className="scene-heading">{scene.heading}</h2>
@@ -35,13 +99,39 @@ const Generate = () => {
                 <button onClick={addScene} className="add-button">+</button>
               )}
             </div>
-            <textarea placeholder={`Enter details for ${scene.heading}`} className="scene-textbox" />
+            <textarea
+              placeholder={`Enter details for ${scene.heading}`}
+              className="scene-textbox"
+              value={scene.details}
+              onChange={(e) => handleSceneChange(index, e.target.value)}
+            />
           </div>
         ))}
       </div>
     );
   };
-  
+
+
+
+
+  async function generateAnswer(e) {
+    e.preventDefault(); // Prevent the form from submitting
+    console.log("Loading...");
+    try {
+      const response = await axios({
+        url: "http://localhost:4000/generate-dialogue",
+        method: "post",
+        data: { question }
+      });
+      console.log(response.data.generatedText);
+    } catch (error) {
+      console.error("Error generating answer:", error);
+    }
+  }
+
+
+
+
   return (
     <div className="gen-container">
       <div className="gen-left">
@@ -62,22 +152,18 @@ const Generate = () => {
             <input type="email" id="gen-email" name="gen-email" required />
 
             <label htmlFor="gen-storyline">Storyline:</label>
-            <textarea 
-            id="gen-storyline" name="gen-storyline" rows="7" required></textarea>
-
-              {/* value={question} onChange={(e)=> setQuestion(e.target.value) */}
+              <textarea value={question} onChange={(e) => setQuestion(e.target.value)}
+                id="gen-storyline" name="gen-storyline" rows="5" required></textarea>
 
             <label htmlFor="gen-style">Comic Style:</label>
             <input type="text" id="gen-style" name="gen-style" required />
 
-            <button id="gdialogue" className="genDialogue" type="submit">Generate dialogue</button> 
+            <button onClick={generateAnswer} id="gdialogue" className="genDialogue" type="submit">Generate dialogue</button> 
+          </form>}
 
-            
 
-          </form> }
-          {selectedTab === 'tab2' && 
-          
-          (
+
+          {selectedTab === 'tab2' && (
             <div>
               <label htmlFor="num-characters">Number of Characters:</label>
               <select id="num-characters" onChange={handleNumCharactersChange}>
@@ -85,61 +171,68 @@ const Generate = () => {
                 <option value="2">2</option>
                 <option value="3">3</option>
               </select>
-
               <div id="character-inputs">
-                {[...Array(numCharacters)].map((_, i) => (
-                  <div key={i} className="character-row">
-                    <input type="text" placeholder="Character Name" className="name-input" />
-                    <input type="text" placeholder="Character Description" className="description-input" />
+                {characters.map((char, index) => (
+                  <div key={index} className="character-row">
+                    <input
+                      type="text"
+                      placeholder="Character Name"
+                      className="name-input"
+                      value={char.name}
+                      onChange={(e) => handleCharacterChange(index, 'name', e.target.value)}
+                    />
+                    <input
+                      type="text"
+                      placeholder="Character Description"
+                      className="description-input"
+                      value={char.description}
+                      onChange={(e) => handleCharacterChange(index, 'description', e.target.value)}
+                    />
                   </div>
                 ))}
-                <button id="gen-char-save"> Create character/s </button>
+                <button id="gen-char-save" onClick={handleCharacterSave}>Create character/s</button>
               </div>
             </div>
           )}
-    
-    {selectedTab === 'tab3' && (
-  <div>
-    <div>
-      <SceneManager />
-    </div> 
-    <div>
-      <button type='submit' id='gen-sceneinfo'>Save scenes</button>
-    </div>
-  </div>
-)}
 
+
+
+          {selectedTab === 'tab3' && (
+            <div>
+              <div>
+                <SceneManager />
+              </div>
+              <div>
+                <button type='submit' id='gen-sceneinfo' onClick={handleSave}>Save scenes</button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
 
 
       <div className="gen-right">
-      <h1 className="gen-head">Transform Your Stories into Stunning Comics !!!</h1>
-      <div className="boxes-container">
-      <div className="box-wrapper">
-      <h2 className="box-heading">View in Browser</h2>
-      <div className="box">
-        <img src={genpreview} alt=''/>
+        <h1 className="gen-head">Transform Your Stories into Stunning Comics !!!</h1>
+        <div className="boxes-container">
+          <div className="box-wrapper">
+            <h2 className="box-heading">View in Browser</h2>
+            <div className="box">
+              <img src={genpreview} alt='' />
+            </div>
+          </div>
+          <div className="box-wrapper">
+            <h2 className="box-heading">Download</h2>
+            <div className="box">
+              <img src={gendown} alt='' />
+            </div>
+          </div>
+        </div>
       </div>
+      <div className="image-container">
+        <img src={generatebg} alt="" className="generatebg" />
+        <button className="gen-button">Click to Craft your Comic</button>
       </div>
-    <div className="box-wrapper">
-      <h2 className="box-heading">Download</h2>
-      <div className="box">
-      <img src={gendown} alt='' />
-      </div>
-    </div>
-  </div>
-</div>
-
-      
-<div className="image-container">
-    <img src={generatebg} alt="" className="generatebg" />
-    <button className="gen-button">Click to Craft your Comic</button>
-  </div>
-
-
-
     </div>
   );
 };
