@@ -55,6 +55,7 @@ const Generate = () => {
         return acc;
       }, []);
     setCharacters(newCharacters);
+    alert("Character information saved successfully!");
   };
 
   const replaceCharacterNames = (text) => {
@@ -113,6 +114,7 @@ const Generate = () => {
       content: sceneElements[index].value,
       processedContent: replaceCharacterNames(sceneElements[index].value),
     }));
+    alert("Scenes are processed successfully!");
     console.log("Processed Scenes:", updatedScenes);
     // Here you can send updatedScenes to your backend or use it as needed
   };
