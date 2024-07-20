@@ -21,6 +21,7 @@ const Generate = () => {
   async function generateAnswer(e) {
     e.preventDefault(); // Prevent the form from submitting
     console.log("Loading...");
+    console.log(question);
     try {
       const response = await axios({
         url: "http://localhost:4000/generate-dialogue",
@@ -153,18 +154,13 @@ const Generate = () => {
                 id="gen-storyline"
                 name="gen-storyline"
                 rows="7"
+                value={question}
+                onChange={handleQuestionChange}
                 required
               ></textarea>
 
               <label htmlFor="gen-style">Comic Style:</label>
-              <input
-                type="text"
-                id="gen-style"
-                name="gen-style"
-                value={question}
-                onChange={handleQuestionChange}
-                required
-              />
+              <input type="text" id="gen-style" name="gen-style" required />
 
               <button
                 id="gdialogue"

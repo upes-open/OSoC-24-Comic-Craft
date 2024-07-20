@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
   const { question } = req.body;
-  console.log(req.boody);
+  console.log(question);
 
   try {
     const response = await axios({
