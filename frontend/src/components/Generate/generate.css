@@ -254,3 +254,7 @@
   ); /* Adjusted to fit remaining height minus navbar and margin */
   overflow-y: auto; /* Enable scroll if content exceeds height */
 }
+
+.story-board-tab {
+  width: 65%;
+}

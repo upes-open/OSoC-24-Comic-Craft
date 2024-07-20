@@ -144,7 +144,7 @@ const Generate = () => {
         </div>
         <div className="gen-scrollable-content">
           {selectedTab === "tab1" && (
-            <form>
+            <form className="story-board-tab">
               <label htmlFor="gen-email">Email:</label>
               <input type="email" id="gen-email" name="gen-email" required />
 
