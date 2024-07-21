@@ -193,5 +193,11 @@
   - Update: generate.js in frontend modified
   <br>
 
-  
+- Date 17/07/2024
+
+   - `5e7b53f` [ParthDhavan04](https://github.com/ParthDhavan04)
+  - Feat: Implement Scenes tab
+  - Fixes: Issue 66
+  - Update: generate.js in frontend modified
+  <br>
    
