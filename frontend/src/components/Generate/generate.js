@@ -12,7 +12,8 @@ const Generate = () => {
   const [scenes, setScenes] = useState([
     { id: 1, heading: "Scene 1", content: "" },
   ]);
-  const [question, setQuestion] = useState();
+  const [question, setQuestion] = useState("");
+  const [processedScenes, setProcessedScenes] = useState([]);
 
   const handleTabClick = (tab) => {
     setSelectedTab(tab);
@@ -115,9 +116,34 @@ const Generate = () => {
       content: sceneElements[index].value,
       processedContent: replaceCharacterNames(sceneElements[index].value),
     }));
+    setProcessedScenes(updatedScenes.map(scene => scene.processedContent));
     alert("Scenes are processed successfully!");
     console.log("Processed Scenes:", updatedScenes);
-    // Here you can send updatedScenes to your backend or use it as needed
+  };
+
+  const generateComic = async () => {
+    const payload = {
+      artStyle: 'pixar art',
+      pages: [
+        {
+          scenes: processedScenes
+        }
+      ]
+    };
+
+    console.log("Payload is:",payload);
+
+    try {
+      const response = await axios.post('http://localhost:4000/comic/generate', payload, {
+        withCredentials: true, // Send cookies
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+      console.log('Comic generated:', response.data);
+    } catch (error) {
+      console.error('Failed to generate comic:', error);
+    }
   };
 
   return (
@@ -235,7 +261,7 @@ const Generate = () => {
 
       <div className="image-container">
         <img src={generatebg} alt="" className="generatebg" />
-        <button className="gen-button">Click to Craft your Comic</button>
+        <button className="gen-button" onClick={generateComic}>Click to Craft your Comic</button>
       </div>
     </div>
   );

@@ -6,7 +6,6 @@ import Login from './components/Login/login'; // Import your Login component
 import Navbar from './components/Nav/Navbar';
 import Signup from './components/sign_up/signup';
 import Feedback from './components/Feedback/feedback';
-import CharGenerator from './components/Generate/comichar';
 import './App.css';
 
 function App() {
@@ -22,7 +21,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/feedback" element={<Feedback />} />
-        <Route path="/comichar" element={<CharGenerator/>} />
       </Routes>
     </div>
   );
