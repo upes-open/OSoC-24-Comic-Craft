@@ -200,4 +200,12 @@
   - Fixes: Issue 66
   - Update: generate.js in frontend modified
   <br>
+
+- Date 21/07/2024
+
+   - `d27e58f` [rampantvoid](https://github.com/rampantvoid)
+  - Feat: Prompt Setup
+  - Fixes: Issue 68
+  - Update: generate.js in frontend, files in backend modified
+  <br>
    
