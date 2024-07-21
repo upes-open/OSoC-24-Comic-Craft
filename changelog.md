@@ -160,3 +160,38 @@
   - Fixes: Issue 55
   - Update: comichar.js file created in frontend
   <br>
+
+- Date 16/07/2024
+
+   - `56e1668` [ParthDhavan04](https://github.com/ParthDhavan04)
+  - Feat: Revamp generate comic page
+  - Fixes: Issue 57
+  - Update: Dashboard added in the UI folder
+  <br>
+
+   - `35a2ea6` [ParthDhavan04](https://github.com/ParthDhavan04)
+  - Feat: Gemini API in backend
+  - Fixes: Issue 59
+  - Update: app.js and generatedialogue.js in backend
+  <br>
+
+     - `0d21e95` [ParthDhavan04](https://github.com/ParthDhavan04)
+  - Feat: Integrate frontend and backend
+  - Fixes: Issue 60
+  - Update: generate.js in frontend modified
+  <br>
+
+     - `e10e1b3` [ParthDhavan04](https://github.com/ParthDhavan04)
+  - Feat: Implement revamped page layout
+  - Fixes: Issue 62
+  - Update: generate.js in frontend modified
+  <br>
+
+     - `6c11f72` [ParthDhavan04](https://github.com/ParthDhavan04)
+  - Feat: Implement character tab
+  - Fixes: Issue 64
+  - Update: generate.js in frontend modified
+  <br>
+
+  
+   
