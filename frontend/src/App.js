@@ -8,6 +8,7 @@ import Signup from './components/sign_up/signup';
 import Feedback from './components/Feedback/feedback';
 import './App.css';
 
+
 function App() {
   const location = useLocation();
   const hideNavbarRoutes = ['/login'];

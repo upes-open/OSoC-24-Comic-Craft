@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const comicRoutes = require("./routes/comicRoutes");
 const generateDialogue = require("./routes/generateDialogues");
+const fetch = require('node-fetch');
 
 const app = express();
 const port = 4000;
@@ -33,6 +34,35 @@ const authenticateToken = (req, res, next) => {
     next();
   });
 };
+
+app.get('/proxy-image', async (req, res) => {
+  try {
+    const imageUrl = req.query.url;
+    if (!imageUrl) {
+      return res.status(400).send('Image URL is required');
+    }
+
+    // Validate URL (simple validation to check if URL is absolute)
+    try {
+      new URL(imageUrl);
+    } catch (e) {
+      return res.status(400).send('Invalid URL');
+    }
+
+    const response = await fetch(imageUrl);
+    if (!response.ok) {
+      throw new Error('Error fetching image');
+    }
+
+    const buffer = await response.buffer();
+    res.set('Content-Type', response.headers.get('content-type'));
+    res.send(buffer);
+  } catch (error) {
+    console.error('Error fetching image:', error);
+    res.status(500).send('Error fetching image');
+  }
+});
+
 
 // Api for comic generation
 app.use("/comic", comicRoutes);
