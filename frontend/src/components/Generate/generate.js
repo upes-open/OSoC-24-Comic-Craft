@@ -9,18 +9,18 @@ const Generate = () => {
   const [selectedTab, setSelectedTab] = useState("");
   const [numCharacters, setNumCharacters] = useState(1);
   const [characters, setCharacters] = useState([]);
-  const [scenes, setScenes] = useState([
-    { id: 1, heading: "Scene 1", content: "" },
-  ]);
+  const [scenes, setScenes] = useState([{ id: 1, heading: "Scene 1", content: "" }]);
   const [question, setQuestion] = useState("");
   const [processedScenes, setProcessedScenes] = useState([]);
+  const [imageUrls, setImageUrls] = useState([]); // Define state for image URLs
+
 
   const handleTabClick = (tab) => {
     setSelectedTab(tab);
   };
 
   async function generateAnswer(e) {
-    e.preventDefault(); // Prevent the form from submitting
+    e.preventDefault();
     console.log("Loading...");
     console.log(question);
     try {
@@ -121,31 +121,63 @@ const Generate = () => {
     console.log("Processed Scenes:", updatedScenes);
   };
 
-  const generateComic = async () => {
-    const payload = {
-      artStyle: 'pixar art',
-      pages: [
-        {
-          scenes: processedScenes
-        }
-      ]
-    };
-
-    console.log("Payload is:",payload);
-
-    try {
-      const response = await axios.post('http://localhost:4000/comic/generate', payload, {
-        withCredentials: true, // Send cookies
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-      console.log('Comic generated:', response.data);
-    } catch (error) {
-      console.error('Failed to generate comic:', error);
-    }
+  
+const generateComic = async () => {
+  const payload = {
+    artStyle: 'pixar art',
+    pages: [
+      {
+        scenes: processedScenes
+      }
+    ]
   };
+  console.log("Payload is:", payload);
 
+
+  try {
+    const response = await axios.post('http://localhost:4000/comic/generate', payload, {
+      withCredentials: true,
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    console.log('Comic generated:', response.data);
+    const imageUrlsFromResponse = response.data.pages.flat(); // Flatten the array if needed
+    setImageUrls(imageUrlsFromResponse); // Update state with multiple URLs
+  } catch (error) {
+    console.error('Failed to generate comic:', error);
+  }
+};
+  
+
+const downloadImages = async () => {
+  try {
+    if (imageUrls.length === 0) {
+      throw new Error('No image URLs available');
+    }
+
+    for (const url of imageUrls) {
+      console.log(`Downloading image from URL: ${url}`);
+      const response = await fetch(`http://localhost:4000/proxy-image?url=${encodeURIComponent(url)}`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch image from proxy: ${url}`);
+      }
+
+      const blob = await response.blob();
+      const objectUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = objectUrl;
+      a.download = `image_${Date.now()}.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+  } catch (error) {
+    console.error('Error downloading images:', error);
+  }
+};
+
+  
   return (
     <div className="gen-container">
       <div className="gen-left">
@@ -252,7 +284,7 @@ const Generate = () => {
           </div>
           <div className="box-wrapper">
             <h2 className="box-heading">Download</h2>
-            <div className="box">
+            <div className="box" onClick={downloadImages}>
               <img src={gendown} alt="" />
             </div>
           </div>
