@@ -7,6 +7,8 @@ const cors = require("cors");
 const comicRoutes = require("./routes/comicRoutes");
 const generateDialogue = require("./routes/generateDialogues");
 const fetch = require('node-fetch');
+const fs = require('fs');
+const path = require('path');
 
 const app = express();
 const port = 4000;
@@ -55,13 +57,32 @@ app.get('/proxy-image', async (req, res) => {
     }
 
     const buffer = await response.buffer();
-    res.set('Content-Type', response.headers.get('content-type'));
-    res.send(buffer);
+    const timestamp = Date.now();
+    const imageFileName = `image_${timestamp}.png`;
+    const imagePath = path.join(__dirname, 'images', imageFileName);
+
+    fs.writeFileSync(imagePath, buffer); // Write image to 'images' folder
+
+    res.status(200).send(imageFileName); // Send the filename back to client
   } catch (error) {
     console.error('Error fetching image:', error);
     res.status(500).send('Error fetching image');
   }
 });
+
+
+app.get('/download-image', (req, res) => {
+  const { filename } = req.query;
+  const imagePath = path.join(__dirname, 'images', filename);
+
+  res.download(imagePath, (err) => {
+    if (err) {
+      console.error('Error downloading image:', err);
+      res.status(500).send('Error downloading image');
+    }
+  });
+});
+
 
 
 // Api for comic generation

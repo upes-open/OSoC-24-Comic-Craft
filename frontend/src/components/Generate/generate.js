@@ -163,14 +163,24 @@ const downloadImages = async () => {
         throw new Error(`Failed to fetch image from proxy: ${url}`);
       }
 
-      const blob = await response.blob();
-      const objectUrl = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = objectUrl;
-      a.download = `image_${Date.now()}.png`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
+      const filename = await response.text(); // Get the filename from server response
+
+      // Use XHR to download the image to 'images' folder on backend
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', `http://localhost:4000/download-image?filename=${filename}`, true);
+      xhr.responseType = 'blob';
+
+      xhr.onload = function () {
+        const blob = xhr.response;
+        const a = document.createElement('a');
+        a.href = window.URL.createObjectURL(blob);
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      };
+
+      xhr.send();
     }
   } catch (error) {
     console.error('Error downloading images:', error);
