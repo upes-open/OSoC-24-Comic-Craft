@@ -7,6 +7,7 @@ import Navbar from './components/Nav/Navbar';
 import Signup from './components/sign_up/signup';
 import Feedback from './components/Feedback/feedback';
 import './App.css';
+import ViewBrowser from './components/Generate/ViewBrowser';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/generate" element={<Generate />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/view-browser" element={<ViewBrowser />} />
         <Route path="/feedback" element={<Feedback />} />
       </Routes>
     </div>
