@@ -3,6 +3,7 @@ import "./generate.css";
 import generatebg from "../../assets/generatebg.png";
 import genpreview from "../../assets/gen-preview.png";
 import gendown from "../../assets/gen-down.png";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Generate = () => {
@@ -289,7 +290,9 @@ const downloadImages = async () => {
           <div className="box-wrapper">
             <h2 className="box-heading">View in Browser</h2>
             <div className="box">
+            <Link to="/view-browser"> {/* Use Link for navigation */}
               <img src={genpreview} alt="" />
+              </Link>
             </div>
           </div>
           <div className="box-wrapper">
