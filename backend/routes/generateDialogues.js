@@ -4,14 +4,14 @@ const axios = require("axios");
 const router = express.Router();
 
 router.post("/", async (req, res) => {
-  const { question } = req.body;
-  console.log(question);
+  const { prompt } = req.body;
+  console.log("Prompt Received",prompt);
 
   try {
     const response = await axios({
       url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyB68wXRo-zlmJda3cps-8r0qYqqjjnD7Pw",
       method: "post",
-      data: { contents: [{ parts: [{ text: question }] }] },
+      data: { contents: [{ parts: [{ text: prompt }] }] },
     });
 
     const generatedText = response.data.candidates[0].content.parts[0].text;
