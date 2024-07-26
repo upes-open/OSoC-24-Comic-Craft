@@ -41,34 +41,34 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.get('/proxy-image', async (req, res) => {
   try {
-    const imageUrl = req.query.url;
-    if (!imageUrl) {
-      return res.status(400).send('Image URL is required');
-    }
+      const imageUrl = req.query.url;
+      const index = req.query.index; // Get index from query parameters
+      if (!imageUrl || index === undefined) {
+          return res.status(400).send('Image URL and index are required');
+      }
 
-    // Validate URL (simple validation to check if URL is absolute)
-    try {
-      new URL(imageUrl);
-    } catch (e) {
-      return res.status(400).send('Invalid URL');
-    }
+      // Validate URL (simple validation to check if URL is absolute)
+      try {
+          new URL(imageUrl);
+      } catch (e) {
+          return res.status(400).send('Invalid URL');
+      }
 
-    const response = await fetch(imageUrl);
-    if (!response.ok) {
-      throw new Error('Error fetching image');
-    }
+      const response = await fetch(imageUrl);
+      if (!response.ok) {
+          throw new Error('Error fetching image');
+      }
 
-    const buffer = await response.buffer();
-    const timestamp = Date.now();
-    const imageFileName = `image_${timestamp}.png`;
-    const imagePath = path.join(__dirname, 'images', imageFileName);
+      const buffer = await response.buffer();
+      const imageFileName = `image_${index}.png`; // Use index for filename
+      const imagePath = path.join(__dirname, 'images', imageFileName);
 
-    fs.writeFileSync(imagePath, buffer); // Write image to 'images' folder
+      fs.writeFileSync(imagePath, buffer); // Write image to 'images' folder
 
-    res.status(200).send(imageFileName); // Send the filename back to client
+      res.status(200).send(imageFileName); // Send the filename back to client
   } catch (error) {
-    console.error('Error fetching image:', error);
-    res.status(500).send('Error fetching image');
+      console.error('Error fetching image:', error);
+      res.status(500).send('Error fetching image');
   }
 });
 
