@@ -168,40 +168,41 @@ const Generate = () => {
 
   const downloadImages = async () => {
     try {
-      if (imageUrls.length === 0) {
-        throw new Error('No image URLs available');
-      }
-
-      for (const url of imageUrls) {
-        console.log(`Downloading image from URL: ${url}`);
-        const response = await fetch(`http://localhost:4000/proxy-image?url=${encodeURIComponent(url)}`);
-        if (!response.ok) {
-          throw new Error(`Failed to fetch image from proxy: ${url}`);
+        if (imageUrls.length === 0) {
+            throw new Error('No image URLs available');
         }
 
-        const filename = await response.text(); // Get the filename from server response
+        for (let i = 0; i < imageUrls.length; i++) {
+            const url = imageUrls[i];
+            console.log(`Downloading image from URL: ${url}`);
+            const response = await fetch(`http://localhost:4000/proxy-image?url=${encodeURIComponent(url)}&index=${i}`);
+            if (!response.ok) {
+                throw new Error(`Failed to fetch image from proxy: ${url}`);
+            }
 
-        // Use XHR to download the image to 'images' folder on backend
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', `http://localhost:4000/download-image?filename=${filename}`, true);
-        xhr.responseType = 'blob';
+            const filename = await response.text(); // Get the filename from server response
 
-        xhr.onload = function () {
-          const blob = xhr.response;
-          const a = document.createElement('a');
-          a.href = window.URL.createObjectURL(blob);
-          a.download = filename;
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-        };
+            // Use XHR to download the image to 'images' folder on backend
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', `http://localhost:4000/download-image?filename=${filename}`, true);
+            xhr.responseType = 'blob';
 
-        xhr.send();
-      }
+            xhr.onload = function () {
+                const blob = xhr.response;
+                const a = document.createElement('a');
+                a.href = window.URL.createObjectURL(blob);
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            };
+
+            xhr.send();
+        }
     } catch (error) {
-      console.error('Error downloading images:', error);
+        console.error('Error downloading images:', error);
     }
-  };
+};
 
 
   return (
