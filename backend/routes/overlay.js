@@ -3,11 +3,18 @@ const fs = require('fs');
 const path = require('path');
 const { createCanvas, loadImage } = require('canvas');
 const axios = require('axios');
+const PDFDocument = require('pdfkit');
+const sizeOf = require('image-size');
 const router = express.Router();
 
 // Define the fixed image folder path
 const IMAGE_FOLDER_PATH = path.join(__dirname, '../images');
 const OUTPUT_FOLDER_PATH = path.join(__dirname, '../pages');
+const OUTPUT_PDF_PATH = path.join(__dirname, 'output.pdf');
+
+// Define the page size for the PDF
+const PAGE_WIDTH = 595.276; // A4 width in points
+const PAGE_HEIGHT = 841.890; // A4 height in points
 
 // Function to wrap text into lines
 function wrapText(ctx, text, maxWidth) {
@@ -73,6 +80,81 @@ async function overlayTextOnImage(imagePath, text, outputPath) {
     fs.writeFileSync(outputPath, buffer);
 }
 
+// Function to create a PDF from specific images in a folder
+function createPdfFromSelectedImages(folderPath, outputFilePath) {
+    // Create a new PDF document
+    const doc = new PDFDocument({
+        autoFirstPage: false // We add pages manually
+    });
+
+    // Stream the PDF to a file
+    doc.pipe(fs.createWriteStream(outputFilePath));
+
+    // Read the files in the folder
+    const files = fs.readdirSync(folderPath);
+
+    // Filter and sort the image files by number
+    const imageFiles = files.filter(file => {
+        const match = file.match(/^output-image(\d+)\.(jpg|jpeg|png|gif)$/i);
+        return match;
+    }).sort((a, b) => {
+        const numA = parseInt(a.match(/^output-image(\d+)\./)[1], 10);
+        const numB = parseInt(b.match(/^output-image(\d+)\./)[1], 10);
+        return numA - numB;
+    });
+
+    if (imageFiles.length === 0) {
+        console.log('No matching images found in the folder.');
+        doc.end();
+        return;
+    }
+
+    // Add each image to the PDF
+    imageFiles.forEach(file => {
+        const imagePath = path.join(folderPath, file);
+
+        // Read image dimensions
+        const dimensions = sizeOf(imagePath);
+        const imageWidth = dimensions.width;
+        const imageHeight = dimensions.height;
+
+        // Add a new page with A4 size
+        doc.addPage({
+            size: [PAGE_WIDTH, PAGE_HEIGHT]
+        });
+
+        // Calculate fit dimensions
+        const aspectRatio = imageWidth / imageHeight;
+
+        let fitWidth, fitHeight;
+
+        if (PAGE_WIDTH / PAGE_HEIGHT < aspectRatio) {
+            // Fit to width
+            fitWidth = PAGE_WIDTH;
+            fitHeight = fitWidth / aspectRatio;
+        } else {
+            // Fit to height
+            fitHeight = PAGE_HEIGHT;
+            fitWidth = fitHeight * aspectRatio;
+        }
+
+        // Center image on the page
+        const x = (PAGE_WIDTH - fitWidth) / 2;
+        const y = (PAGE_HEIGHT - fitHeight) / 2;
+
+        doc.image(imagePath, x, y, {
+            width: fitWidth,
+            height: fitHeight
+        });
+
+        console.log(`Added ${file} to PDF.`);
+    });
+
+    // Finalize the PDF file
+    doc.end();
+    console.log('PDF created successfully:', outputFilePath);
+}
+
 router.post('/', async (req, res) => { // Change to handle POST requests to '/' within this router
     try {
         // Fetch dialogues from the /generate-dialogues/get-dialogues endpoint
@@ -112,7 +194,10 @@ router.post('/', async (req, res) => { // Change to handle POST requests to '/' 
             }
         }
 
-        res.json({ message: 'Images processed successfully!', outputFolderPath: OUTPUT_FOLDER_PATH });
+        // Create a PDF from the processed images
+        createPdfFromSelectedImages(OUTPUT_FOLDER_PATH, OUTPUT_PDF_PATH);
+
+        res.json({ message: 'Images processed successfully and PDF created!', outputPdfPath: OUTPUT_PDF_PATH });
     } catch (error) {
         console.error('Error processing images:', error);
         res.status(500).json({ error: 'Failed to process images' });
