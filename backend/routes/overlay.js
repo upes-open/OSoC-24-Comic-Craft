@@ -10,7 +10,7 @@ const router = express.Router();
 // Define the fixed image folder path
 const IMAGE_FOLDER_PATH = path.join(__dirname, '../images');
 const OUTPUT_FOLDER_PATH = path.join(__dirname, '../pages');
-const OUTPUT_PDF_PATH = path.join(__dirname, 'output.pdf');
+const OUTPUT_PDF_PATH = path.join(__dirname, 'comic.pdf');
 
 // Define the page size for the PDF
 const PAGE_WIDTH = 595.276; // A4 width in points
