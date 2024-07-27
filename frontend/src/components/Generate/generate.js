@@ -211,7 +211,7 @@ const handleProcessImages = async () => {
     
     // Log response and show success message
     console.log(response.data);
-    alert('Images processed successfully!');
+    alert('Comic Crafted Successfully!!!');
   } catch (error) {
     console.error('Error processing images:', error);
     alert('Failed to process images. Check console for details.');

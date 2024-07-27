@@ -155,7 +155,23 @@ function createPdfFromSelectedImages(folderPath, outputFilePath) {
     console.log('PDF created successfully:', outputFilePath);
 }
 
-router.post('/', async (req, res) => { // Change to handle POST requests to '/' within this router
+// Function to clear content of specified directories
+function clearDirectories(paths) {
+    paths.forEach(folderPath => {
+        fs.readdir(folderPath, (err, files) => {
+            if (err) throw err;
+
+            for (const file of files) {
+                const filePath = path.join(folderPath, file);
+                fs.unlink(filePath, err => {
+                    if (err) throw err;
+                });
+            }
+        });
+    });
+}
+
+router.post('/', async (req, res) => {
     try {
         // Fetch dialogues from the /generate-dialogues/get-dialogues endpoint
         const dialoguesResponse = await axios.get('http://localhost:4000/generate-dialogue/get-dialogues');
@@ -196,6 +212,9 @@ router.post('/', async (req, res) => { // Change to handle POST requests to '/' 
 
         // Create a PDF from the processed images
         createPdfFromSelectedImages(OUTPUT_FOLDER_PATH, OUTPUT_PDF_PATH);
+
+        // Clear content of folders after PDF is created
+        clearDirectories([IMAGE_FOLDER_PATH, OUTPUT_FOLDER_PATH]);
 
         res.json({ message: 'Images processed successfully and PDF created!', outputPdfPath: OUTPUT_PDF_PATH });
     } catch (error) {
