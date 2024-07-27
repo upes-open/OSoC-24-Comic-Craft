@@ -57,6 +57,11 @@
   cursor: pointer;
 }
 
+#magic{
+  height: 42px;
+  width: 42px;
+}
+
 .generatebg {
   width: 59.7%;
   height: 35%;

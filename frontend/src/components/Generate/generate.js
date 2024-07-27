@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { v4 as uuidv4 } from 'uuid'; // Import uuid library
 import "./generate.css";
 import generatebg from "../../assets/generatebg.png";
 import genpreview from "../../assets/gen-preview.png";
+import magicwand from "../../assets/magic-wand.png";
 import gendown from "../../assets/gen-down.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -204,6 +204,20 @@ const Generate = () => {
 };
 
 
+const handleProcessImages = async () => {
+  try {
+    // Send POST request to process images
+    const response = await axios.post('http://localhost:4000/process-image', {});
+    
+    // Log response and show success message
+    console.log(response.data);
+    alert('Images processed successfully!');
+  } catch (error) {
+    console.error('Error processing images:', error);
+    alert('Failed to process images. Check console for details.');
+  }
+};
+
   return (
     <div className="gen-container">
       <div className="gen-left">
@@ -302,6 +316,18 @@ const Generate = () => {
           Transform Your Stories into Stunning Comics !!!
         </h1>
         <div className="boxes-container">
+        <div className="box-wrapper">
+            <h2 className="box-heading">Generate Character</h2>
+            <div className="box" onClick={generateComic}>
+              <img src={magicwand} alt="" id="magic"/>
+            </div>
+          </div>
+        <div className="box-wrapper">
+            <h2 className="box-heading">Download</h2>
+            <div className="box" onClick={downloadImages}>
+              <img src={gendown} alt="" />
+            </div>
+          </div>
           <div className="box-wrapper">
             <h2 className="box-heading">View in Browser</h2>
             <div className="box">
@@ -310,18 +336,14 @@ const Generate = () => {
               </Link>
             </div>
           </div>
-          <div className="box-wrapper">
-            <h2 className="box-heading">Download</h2>
-            <div className="box" onClick={downloadImages}>
-              <img src={gendown} alt="" />
-            </div>
-          </div>
+
         </div>
       </div>
 
       <div className="image-container">
         <img src={generatebg} alt="" className="generatebg" />
-        <button className="gen-button" onClick={generateComic}>Click to Craft your Comic</button>
+        <button className="gen-button" onClick={handleProcessImages}>Click to Craft your Comic</button>
+        {/* <button onClick={handleProcessImages}>Canvas</button> */}
       </div>
     </div>
   );
