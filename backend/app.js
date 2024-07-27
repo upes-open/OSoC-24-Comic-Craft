@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const comicRoutes = require("./routes/comicRoutes");
 const generateDialogue = require("./routes/generateDialogues");
+const overlay = require("./routes/overlay");
 const fetch = require('node-fetch');
 const fs = require('fs');
 const path = require('path');
@@ -102,6 +103,8 @@ app.use("/comic", comicRoutes);
 
 // Api for dialogue generation
 app.use("/generate-dialogue", generateDialogue); // Use the new route
+app.use('/process-image', overlay);
+
 
 // Route to handle user signup
 app.post("/signup", async (req, res) => {
