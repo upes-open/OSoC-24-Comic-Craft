@@ -32,7 +32,7 @@ const Generate = () => {
 
 
     const prompt = `Generate me small one or max two liner dialogues on the basis of the storyline "${question}" and the dialogues should just be defining scenes which are-
-     "${scenesContent}". Always write keyword "START" just before each dialogue begins and "ENDS" right after it ends
+     "${scenesContent}". Always write keyword "**START**" just before each dialogue begins and "**ENDS**" right after it ends
   For each scene only one liner dialogue, and if the scene is set such that there is no conversation then maybe a description or a small tagline or subtitle of the scene.
  `;
     console.log("Prompt:", prompt); // Log the generated prompt for verification
@@ -43,12 +43,11 @@ const Generate = () => {
         method: "post",
         data: { prompt }
       });
-      console.log("Generated dialogue:", response.data.generatedText);
+      console.log("Generated dialogue:", response.data.dialogues);
     } catch (error) {
       console.error("Error generating answer:", error);
     }
   }
-
 
   const handleNumCharactersChange = (e) => {
     setNumCharacters(parseInt(e.target.value));
