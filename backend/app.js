@@ -107,6 +107,7 @@ app.use('/process-image', overlay);
 
 
 // Route to handle user signup
+// Route to handle user signup
 app.post("/signup", async (req, res) => {
   try {
     const {
@@ -116,7 +117,6 @@ app.post("/signup", async (req, res) => {
       password,
       gender,
       username,
-      profilePicture,
     } = req.body;
 
     // Check if email or username already exists
@@ -127,15 +127,18 @@ app.post("/signup", async (req, res) => {
         .json({ error: "Email or username already exists" });
     }
 
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
+    console.log("Hashed Password:", hashedPassword); // Debug log
+
     // Create a new user instance
     const newUser = new User({
       firstName,
       lastName,
       email,
-      password: await bcrypt.hash(password, 10), // Hash password before saving
+      password: hashedPassword, // Save hashed password
       gender,
       username,
-      profilePicture,
     });
 
     // Save the user to the database
@@ -148,7 +151,8 @@ app.post("/signup", async (req, res) => {
   }
 });
 
-// Route to handle user login
+
+
 app.post("/login", async (req, res) => {
   const { username, password } = req.body;
 

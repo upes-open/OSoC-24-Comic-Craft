@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './signup.css';
 
 const Signup = () => {
@@ -13,6 +14,7 @@ const Signup = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -64,8 +66,11 @@ const Signup = () => {
           profilePicture: null,
         });
         setErrors({});
-        alert('Signup successful!'); // You can replace this with a more user-friendly notification
-  
+        alert('Signup successful!');
+        
+        // Redirect to /login page
+        navigate('/login');
+        
       } catch (error) {
         console.error('Error submitting form:', error);
         // Handle error state or show an error alert
