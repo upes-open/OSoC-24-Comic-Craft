@@ -15,6 +15,7 @@ const Generate = () => {
   const [question, setQuestion] = useState("");
   const [processedScenes, setProcessedScenes] = useState([]);
   const [imageUrls, setImageUrls] = useState([]); // Define state for image URLs
+  const [email, setEmail] = useState(""); // State for email input
 
 
   const handleTabClick = (tab) => {
@@ -206,8 +207,13 @@ const Generate = () => {
 
 const handleProcessImages = async () => {
   try {
-    // Send POST request to process images
-    const response = await axios.post('http://localhost:4000/process-image', {});
+    if (!email) {
+      alert('Please provide an email address.');
+      return;
+    }
+
+    // Send POST request to process images with email
+    const response = await axios.post('http://localhost:4000/process-image', { email });
     
     // Log response and show success message
     console.log(response.data);
@@ -282,9 +288,15 @@ const handleProcessImages = async () => {
           )}
           {selectedTab === "tab3" && (
             <form className="story-board-tab">
-              <label htmlFor="gen-email">Email:</label>
-              <input type="email" id="gen-email" name="gen-email" required />
-
+             <label htmlFor="gen-email">Email:</label>
+              <input
+                type="email"
+                id="gen-email"
+                name="gen-email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)} // Update email state
+                required
+              />
               <label htmlFor="gen-storyline">Storyline:</label>
               <textarea
                 id="gen-storyline"
