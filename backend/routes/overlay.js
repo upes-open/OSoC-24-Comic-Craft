@@ -5,6 +5,7 @@ const { createCanvas, loadImage } = require('canvas');
 const axios = require('axios');
 const PDFDocument = require('pdfkit');
 const sizeOf = require('image-size');
+const nodemailer = require('nodemailer');
 const router = express.Router();
 
 // Define the fixed image folder path
@@ -15,6 +16,38 @@ const OUTPUT_PDF_PATH = path.join(__dirname, 'comic.pdf');
 // Define the page size for the PDF
 const PAGE_WIDTH = 595.276; // A4 width in points
 const PAGE_HEIGHT = 841.890; // A4 height in points
+
+// Nodemailer configuration
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'comiccraftopen@gmail.com',
+        pass: 'diqo ergn pefq tqwa'
+    }
+});
+
+function sendEmailNotification(pdfPath, recipientEmail) {
+    const mailOptions = {
+      from: 'comiccraftopen@gmail.com',
+      to: recipientEmail,
+      subject: 'PDF Generated Successfully',
+      text: `The PDF has been generated successfully. You can download it from the following link: ${pdfPath}`,
+      attachments: [
+        {
+          filename: path.basename(pdfPath),
+          path: pdfPath
+        }
+      ]
+    };
+  
+    transporter.sendMail(mailOptions, function(error, info) {
+      if (error) {
+        console.log('Error sending email:', error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
+  }
 
 // Function to wrap text into lines
 function wrapText(ctx, text, maxWidth) {
@@ -153,6 +186,9 @@ function createPdfFromSelectedImages(folderPath, outputFilePath) {
     // Finalize the PDF file
     doc.end();
     console.log('PDF created successfully:', outputFilePath);
+
+    // Send email notification with PDF attached
+    sendEmailNotification(outputFilePath);
 }
 
 // Function to clear content of specified directories
@@ -172,6 +208,12 @@ function clearDirectories(paths) {
 }
 
 router.post('/', async (req, res) => {
+    const { email } = req.body;
+
+    if (!email) {
+        return res.status(400).json({ error: 'Email is required' });
+    }
+
     try {
         // Fetch dialogues from the /generate-dialogues/get-dialogues endpoint
         const dialoguesResponse = await axios.get('http://localhost:4000/generate-dialogue/get-dialogues');
@@ -215,6 +257,9 @@ router.post('/', async (req, res) => {
 
         // Clear content of folders after PDF is created
         clearDirectories([IMAGE_FOLDER_PATH, OUTPUT_FOLDER_PATH]);
+
+        // Send email notification with the PDF attached
+        sendEmailNotification(OUTPUT_PDF_PATH, email);
 
         res.json({ message: 'Images processed successfully and PDF created!', outputPdfPath: OUTPUT_PDF_PATH });
     } catch (error) {
