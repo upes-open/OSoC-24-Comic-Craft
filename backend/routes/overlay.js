@@ -30,8 +30,8 @@ function sendEmailNotification(pdfPath, recipientEmail) {
     const mailOptions = {
       from: 'comiccraftopen@gmail.com',
       to: recipientEmail,
-      subject: 'PDF Generated Successfully',
-      text: `The PDF has been generated successfully. You can download it from the following link: ${pdfPath}`,
+      subject: 'HERE IS YOUR COMIC!!!',
+      text: `Your Comic has been crafted successfully.Here is your attached Comic PDF that you can download.Looking forward to tell more tales together.HAPPY CRAFTING!!!`,
       attachments: [
         {
           filename: path.basename(pdfPath),

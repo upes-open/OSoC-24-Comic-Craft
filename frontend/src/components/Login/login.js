@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import Superman from '../../assets/Superman.png';
 import Batman from '../../assets/login-batman.png';
 import GoogleLogo from '../../assets/login-google.png';
@@ -9,6 +10,7 @@ function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate(); // Initialize useNavigate
 
   // Validate form fields
   const validate = () => {
@@ -32,16 +34,16 @@ function Login() {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (!validate()) {
       return; // Exit early if validation fails
     }
-
+  
     const formData = {
       username,
       password
     };
-
+  
     try {
       const response = await fetch('http://localhost:4000/login', {
         method: 'POST',
@@ -51,17 +53,18 @@ function Login() {
         body: JSON.stringify(formData),
         credentials: 'include' // Include credentials if necessary (e.g., cookies)
       });
-
+  
       if (response.ok) {
         const result = await response.json();
         alert('Login successful!');
-        // Handle successful login (e.g., store token, redirect)
+        // Redirect to /generate on successful login
+        navigate('/generate');
         console.log('Login successful:', result);
       } else {
         const data = await response.json();
+        console.error('Login failed:', data.error); // More detailed error logging
         setErrors({ general: data.error }); // Set general error message
         alert(`Login failed: ${data.error}`);
-        console.error('Login failed:', data.error);
       }
     } catch (error) {
       console.error('Error:', error);
@@ -69,7 +72,7 @@ function Login() {
       alert('Something went wrong. Please try again.');
     }
   };
-
+  
   return (
     <div className="login-container">
       {/* Display images */}
