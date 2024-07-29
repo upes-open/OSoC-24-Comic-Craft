@@ -1,15 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Navbar.css'; // Make sure to create this CSS file for styling
+import './Navbar.css'; // Ensure this CSS file is created for styling
 import Profilenavbar from '../../assets/Profilenavbar.png'; // Adjust path based on actual structure
+import logonavbar from '../../assets/logonavbar.png';
 
 const Navbar = () => {
   // Check if user is logged in
   const isLoggedIn = localStorage.getItem('username') !== null;
 
+  // Retrieve the username from local storage
+  const username = localStorage.getItem('username');
+
   return (
     <nav className="navbar">
-      <div className="navbar-logo">logo</div>
+      <div className="navbar-logo">
+        <img src={logonavbar} alt="logo" className="navbar-logo-img" />
+        <span>{isLoggedIn ? username : 'Guest'}</span> {/* Display username or 'Guest' */}
+      </div>
       <div className="navbar-items">
         {isLoggedIn ? (
           <>
