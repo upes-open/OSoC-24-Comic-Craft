@@ -31,6 +31,9 @@
   margin-left: 30%;
 }
 
+.signup-login{
+  color: #007bff;
+}
 .create-account-form h1 {
   font-size: 3rem;
   font-family: 'Comic Sans MS', cursive, sans-serif;
@@ -79,12 +82,11 @@
 }
 
 .create-account-form button {
-  font-family: 'Comic Sans MS', cursive, sans-serif;
   font-size: medium;
   grid-column: 1 / -1;
   border: 3px solid black;
   border-radius: 6px;
-  background-color: #ffcc00;
+  background-color: #FED766;
   color: #000;
   font-weight: bold;
   cursor: pointer;
@@ -94,6 +96,8 @@
   margin-top: 3.3%;
   margin-bottom: 1%;
   margin-left: -140px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .create-account-form .google-signup button {
@@ -101,7 +105,7 @@
   padding: 0.75rem 2rem 0.75rem 0.75rem;
   border: none;
   border-radius: 10px;
-  background-color: #ffcc00;
+  background-color: #FED766;
   color: #000;
   font-weight: bold;
   cursor: pointer;
@@ -138,4 +142,41 @@
   color: red;
   font-size: 0.875rem;
   margin-top: -0.75rem;
+}
+
+signup-extra {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.signup-or-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.white-line-sign-left,
+.white-line-sign-right {
+  width: 300px; /* Adjust width as needed */
+  height: 1px;
+  background-color: white;
+}
+
+.white-line-sign-left {
+  position: relative;
+  margin-right: 10px; /* Adjust spacing between line and OR text */
+  right: 17%;
+}
+
+.white-line-sign-right {
+  
+  margin-left: 10px; /* Adjust spacing between line and OR text */
+}
+
+.signup-or {
+  font-size: 1rem; /* Adjust font size as needed */
+  color: white; /* Adjust color if necessary */
+  margin: 0;
 }

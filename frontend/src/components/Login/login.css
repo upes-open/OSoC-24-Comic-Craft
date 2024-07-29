@@ -59,6 +59,10 @@ body, html {
     background-color: #2C514C; /* Dark green background */
 }
 
+.login-username, .login-pass{
+    text-shadow: -3px 0px 0px #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
 .login-form {
     display: flex;
     flex-direction: column;
@@ -95,6 +99,7 @@ body, html {
     border-radius: 8px; /* Increased border radius */
     cursor: pointer;
     font-size: 0.95rem; /* Slightly smaller font size */
+    font-weight:bolder;
 }
 
 .login-button:hover {
@@ -150,6 +155,7 @@ body, html {
     border-radius: 8px; /* Increased border radius */
     cursor: pointer;
     font-size: 0.95rem; /* Slightly smaller font size */
+    font-weight: bolder;
 }
 
 .google-login-button:hover {

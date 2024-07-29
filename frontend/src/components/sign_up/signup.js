@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
+// import GoogleLogo from '../../assets/login-google.png'; // Ensure this path is correct
+import WhiteLine from '../../assets/orline.png'; // Ensure this path is correct
 import './signup.css';
 
 const Signup = () => {
@@ -42,7 +44,6 @@ const Signup = () => {
       setErrors(validationErrors);
     } else {
       try {
-        // Send form data to backend on port 4000
         const response = await fetch('http://localhost:4000/signup', {
           method: 'POST',
           headers: {
@@ -50,12 +51,11 @@ const Signup = () => {
           },
           body: JSON.stringify(formData),
         });
-  
+
         if (!response.ok) {
           throw new Error('Failed to submit form');
         }
-  
-        // Reset form and show success alert
+
         setFormData({
           firstName: '',
           lastName: '',
@@ -67,18 +67,14 @@ const Signup = () => {
         });
         setErrors({});
         alert('Signup successful!');
-        
-        // Redirect to /login page
         navigate('/login');
-        
       } catch (error) {
         console.error('Error submitting form:', error);
-        // Handle error state or show an error alert
         alert('Failed to sign up. Please try again later.');
       }
     }
   };
-  
+
   return (
     <Background>
       <div className="create-account-form">
@@ -159,13 +155,25 @@ const Signup = () => {
             {errors.username && <p className="error">{errors.username}</p>}
           </div>
 
-          <button type="submit">Sign Up</button>
+          <button type="submit">SIGN UP</button>
         </form>
-        <p>Already have an account? <a href="/login">Login</a></p>
+        <p>Already have an account? <a href="/login" className='signup-login'>Login</a></p>
         
-        <p><span>-----------------OR---------------</span></p>
-        <div className="google-signup">
-          <button>Sign up with </button>
+        <div className="signup-extra">
+          {/* OR line */}
+          <div className="signup-or-container">
+            <img src={WhiteLine} alt="White Line" className="white-line-sign-left" />
+            <p className="signup-or">OR</p>
+            <img src={WhiteLine} alt="White Line" className="white-line-sign-right" />
+          </div>
+
+          {/* Google sign-up button */}
+          <div className="google-signup">
+            <button className="google-signup-button">
+              Sign up with
+              {/* <img src={GoogleLogo} alt="Google" className="google-logo" /> */}
+            </button>
+          </div>
         </div>
       </div>
     </Background>
