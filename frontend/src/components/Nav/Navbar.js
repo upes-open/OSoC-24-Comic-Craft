@@ -1,18 +1,31 @@
-// src/components/Nav/Navbar.js
-
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css'; // Make sure to create this CSS file for styling
-import Profilenavbar from '../../assets/Profilenavbar.png';  // Adjust path based on actual structure
+import Profilenavbar from '../../assets/Profilenavbar.png'; // Adjust path based on actual structure
 
 const Navbar = () => {
+  // Check if user is logged in
+  const isLoggedIn = localStorage.getItem('username') !== null;
+
   return (
     <nav className="navbar">
       <div className="navbar-logo">logo</div>
       <div className="navbar-items">
-        <a href="/signup">SIGNUP</a>
-        <a href="/generate">GENERATE</a>
-        <a href="/my-comics">MY COMICS</a>
-        <a href="/feedback">FEEDBACK</a>
+        {isLoggedIn ? (
+          <>
+            <Link to="/logout">LOGOUT</Link>
+            <Link to="/generate">GENERATE</Link>
+            <Link to="/my-comics">MY COMICS</Link>
+            <Link to="/feedback">FEEDBACK</Link>
+          </>
+        ) : (
+          <>
+            <Link to="/signup">SIGNUP</Link>
+            <Link to="/generate">GENERATE</Link>
+            <Link to="/my-comics">MY COMICS</Link>
+            <Link to="/feedback">FEEDBACK</Link>
+          </>
+        )}
         <img src={Profilenavbar} alt="icon" className="navbar-icon" />
       </div>
     </nav>
