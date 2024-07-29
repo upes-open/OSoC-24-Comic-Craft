@@ -338,8 +338,6 @@ const Generate = () => {
                 required
               ></textarea>
 
-              <label htmlFor="gen-style">Comic Style:</label>
-              <input type="text" id="gen-style" name="gen-style" required />
 
               <button
                 id="gdialogue"
