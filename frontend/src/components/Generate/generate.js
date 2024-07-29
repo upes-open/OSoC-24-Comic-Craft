@@ -73,6 +73,7 @@ const Generate = () => {
       }, []);
     setCharacters(newCharacters);
     alert("Character information saved successfully!");
+    setSelectedTab("tab2"); // Redirect to Scenes tab after saving characters
   };
 
   const replaceCharacterNames = (text) => {
@@ -134,6 +135,7 @@ const Generate = () => {
     setScenes(updatedScenes.map(scene => scene.content));
     setProcessedScenes(updatedScenes.map(scene => scene.processedContent));
     alert("Scenes are processed successfully!");
+    setSelectedTab("tab3"); // Redirect to Story Board tab after saving scenes
     console.log("Processed Scenes:", updatedScenes);
   };
 

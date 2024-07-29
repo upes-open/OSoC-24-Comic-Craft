@@ -85,7 +85,7 @@ function Login() {
       <div className="login-form-container">
         {/* Login form */}
         <form className="login-form" onSubmit={handleSubmit}>
-          <label htmlFor="login-username">Username</label>
+          <label htmlFor="login-username" className='login-username'>Username</label>
           <input
             type="text"
             id="login-username"
@@ -96,7 +96,7 @@ function Login() {
           />
           {errors.username && <p className="error-message">{errors.username}</p>}
 
-          <label htmlFor="login-password">Password</label>
+          <label htmlFor="login-password" className='login-pass'>Password</label>
           <input
             type="password"
             id="login-password"

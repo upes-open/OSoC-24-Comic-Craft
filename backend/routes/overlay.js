@@ -17,37 +17,50 @@ const OUTPUT_PDF_PATH = path.join(__dirname, 'comic.pdf');
 const PAGE_WIDTH = 595.276; // A4 width in points
 const PAGE_HEIGHT = 841.890; // A4 height in points
 
-// Nodemailer configuration
+// Nodemailer configuration with hardcoded details
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'comiccraftopen@gmail.com',
-        pass: 'diqo ergn pefq tqwa'
+        pass: 'diqo ergn pefq tqwa' // Hardcoded password
     }
 });
 
-function sendEmailNotification(pdfPath, recipientEmail) {
-    const mailOptions = {
-      from: 'comiccraftopen@gmail.com',
-      to: recipientEmail,
-      subject: 'HERE IS YOUR COMIC!!!',
-      text: `Your Comic has been crafted successfully.Here is your attached Comic PDF that you can download.Looking forward to tell more tales together.HAPPY CRAFTING!!!`,
-      attachments: [
-        {
-          filename: path.basename(pdfPath),
-          path: pdfPath
-        }
-      ]
-    };
-  
-    transporter.sendMail(mailOptions, function(error, info) {
-      if (error) {
-        console.log('Error sending email:', error);
-      } else {
-        console.log('Email sent: ' + info.response);
-      }
+// Function to send email and return a promise
+function sendMailPromise(mailOptions) {
+    return new Promise((resolve, reject) => {
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(info);
+            }
+        });
     });
-  }
+}
+
+// Function to send email notification with PDF attached
+async function sendEmailNotification(pdfPath, recipientEmail) {
+    const mailOptions = {
+        from: 'comiccraftopen@gmail.com',
+        to: recipientEmail,
+        subject: 'HERE IS YOUR COMIC!!!',
+        text: `Your Comic has been crafted successfully. Here is your attached Comic PDF that you can download. Looking forward to telling more tales together. HAPPY CRAFTING!!!`,
+        attachments: [
+            {
+                filename: path.basename(pdfPath),
+                path: pdfPath
+            }
+        ]
+    };
+
+    try {
+        const info = await sendMailPromise(mailOptions);
+        console.log('Email sent successfully:', info.response);
+    } catch (error) {
+        console.error('Error sending email:', error);
+    }
+}
 
 // Function to wrap text into lines
 function wrapText(ctx, text, maxWidth) {
@@ -188,7 +201,7 @@ function createPdfFromSelectedImages(folderPath, outputFilePath) {
     console.log('PDF created successfully:', outputFilePath);
 
     // Send email notification with PDF attached
-    sendEmailNotification(outputFilePath);
+    sendEmailNotification(outputFilePath, 'recipient@example.com'); // Replace with actual recipient email
 }
 
 // Function to clear content of specified directories
@@ -259,7 +272,7 @@ router.post('/', async (req, res) => {
         clearDirectories([IMAGE_FOLDER_PATH, OUTPUT_FOLDER_PATH]);
 
         // Send email notification with the PDF attached
-        sendEmailNotification(OUTPUT_PDF_PATH, email);
+        await sendEmailNotification(OUTPUT_PDF_PATH, email);
 
         res.json({ message: 'Images processed successfully and PDF created!', outputPdfPath: OUTPUT_PDF_PATH });
     } catch (error) {
