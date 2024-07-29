@@ -1,0 +1,43 @@
+/* Container for the logout alert */
+.logout-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background: rgba(0, 0, 0, 0.2); /* Slightly darker overlay */
+  }
+  
+  /* Styling for the alert box */
+  .logout-alert {
+    background: linear-gradient(135deg, #f3f4f6, #ffffff);
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    font-size: 18px;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    animation: slideIn 0.5s ease-in-out;
+  }
+  
+  /* Animation for sliding in and fading the alert box */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Optional: Style for the alert message text */
+  .logout-alert p {
+    margin: 0;
+    font-weight: bold;
+  }
+  

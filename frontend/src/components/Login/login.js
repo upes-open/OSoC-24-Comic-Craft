@@ -55,11 +55,13 @@ function Login() {
       });
   
       if (response.ok) {
-        const result = await response.json();
         alert('Login successful!');
+  
+        // Store username in local storage
+        localStorage.setItem('username', username);
+  
         // Redirect to /generate on successful login
         navigate('/generate');
-        console.log('Login successful:', result);
       } else {
         const data = await response.json();
         console.error('Login failed:', data.error); // More detailed error logging
@@ -76,8 +78,8 @@ function Login() {
   return (
     <div className="login-container">
       {/* Display images */}
-      <img src={Superman} alt="superman" className="login-image top-left" />
-      <img src={Batman} alt="Bottom Right" className="login-image bottom-right" />
+      <img src={Superman} alt="Superman" className="login-image top-left" />
+      <img src={Batman} alt="Batman" className="login-image bottom-right" />
 
       {/* Display heading */}
       <h1 className="login-heading">Log into your account!</h1>
