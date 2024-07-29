@@ -1,5 +1,6 @@
 /* src/components/Navbar/navbar.css */
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -7,37 +8,53 @@
     padding: 20px 30px;
     background-color: #20AD9A;
     color: white;
-  }
-  
-  .navbar-logo {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .navbar-items {
+}
+
+.navbar-logo {
     display: flex;
     align-items: center;
-  }
-  
-  .navbar-items a {
+    font-family: "Comic Neue", cursive;
+    font-weight: 700;
+}
+
+.navbar-logo img {
+    height: 36px; /* Adjust height as needed */
+    margin-right: 10px; /* Space between logo and text */
+}
+
+.navbar-logo span {
+    font-size: 24px; /* Font size for the username */
+    color: #fff; /* Text color */
+    font-weight: 900; /* Boldest weight for emphasis */
+    text-shadow: 2px 2px 4px #000000(255, 106, 0, 0.7); /* Stronger shadow for better contrast */
+    background: linear-gradient(45deg, #380036, #380036); /* Gradient background */
+    -webkit-background-clip: text; /* Clip background to text */
+    -webkit-text-fill-color: transparent; /* Make text color transparent to show background gradient */
+    padding: 4px 8px; /* Padding around the text */
+    border-radius: 4px; /* Rounded corners for the background */
+}
+
+.navbar-items {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-items a {
     font-family: "Comic Neue", cursive;
     font-weight: 700;
     color: white;
     text-decoration: none;
     margin-right: 20px;
     font-size: 18px;
-  }
-  
-.comic-neue-bold-italic {
-    font-family: "Comic Neue", cursive;
-  }
-  
-  .navbar-items a:hover {
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.navbar-items a:hover {
     text-decoration: underline;
-  }
-  
-  .navbar-icon {
+    color: #e0f7fa; /* Slightly different color on hover */
+}
+
+.navbar-icon {
     width: 24px;
     height: 24px;
-  }
-  
+}
