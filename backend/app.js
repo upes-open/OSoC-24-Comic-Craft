@@ -86,17 +86,6 @@ app.get('/download-image', (req, res) => {
   });
 });
 
-app.get('/list-images', (req, res) => {
-  const imagesFolder = path.join(__dirname, 'images');
-  fs.readdir(imagesFolder, (err, files) => {
-    if (err) {
-      console.error('Error reading images folder:', err);
-      return res.status(500).send('Error reading images folder');
-    }
-    res.status(200).json(files.filter(file => file.endsWith('.png')));
-  });
-});
-
 
 // Api for comic generation
 app.use("/comic", comicRoutes);

@@ -70,7 +70,7 @@
   right: 0%;
 }
 
-.gen-button {
+.gen-button{
   position: absolute;
   top: 85%;
   right: 25%;
@@ -85,6 +85,7 @@
   padding: 6px;
   cursor: pointer;
 }
+
 
 .gen-navbar {
   position: sticky;
@@ -262,4 +263,180 @@
 
 .story-board-tab {
   width: 65%;
+}
+
+/* Container for the loading screen */
+/* Container for the loading screen */
+.loading-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Text and spinner container */
+.loading-content {
+  text-align: center;
+  color: #ffffff;
+  background: linear-gradient(145deg, #333, #222);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Styling for loading text */
+.loading-content p {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  animation: fadeInText 1.5s ease-in-out infinite;
+}
+
+/* Spinner styling */
+.spinner {
+  border: 8px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  border-top: 8px solid #ffffff;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+/* Keyframes for the spinner spinning animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Keyframes for text pulsating animation */
+@keyframes fadeInText {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+
+/* New Loading Comic Screen CSS */
+.loading-comic-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Text and spinner container */
+.loading-comic-indicator .loading-content {
+  text-align: center;
+  color: white;
+  background: linear-gradient(145deg, #444, #333);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* Styling for loading text */
+.loading-comic-indicator .loading-content p {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  animation: fadeInText 1.5s ease-in-out infinite;
+}
+
+/* Spinner styling */
+.loading-comic-indicator .spinner {
+  border: 6px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 6px solid white;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+/* Keyframes for the spinner spinning animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Keyframes for text pulsating animation */
+@keyframes fadeInText {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+
+/* General hover effects for buttons and interactive elements */
+button, .gen-button, .add-button, #gen-char-save, #gen-sceneinfo, #gdialogue {
+  cursor: pointer; /* Ensure cursor is pointer on hover */
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Hover effect for .gen-button */
+.gen-button:hover {
+  background-color: #e7520e; /* Change background color on hover */
+  color: #fff; /* Change text color on hover */
+}
+
+/* Hover effect for .add-button */
+.add-button:hover {
+  background-color: #ddd; /* Change background color on hover */
+}
+
+/* Hover effect for #gen-char-save */
+#gen-char-save:hover {
+  background-color: #6b6b6b; /* Change background color on hover */
+  color: #fff; /* Change text color on hover */
+}
+
+/* Hover effect for #gen-sceneinfo */
+#gen-sceneinfo:hover {
+  background-color: #6b6b6b; /* Change background color on hover */
+  color: #fff; /* Change text color on hover */
+}
+
+/* Hover effect for #gdialogue */
+#gdialogue:hover {
+  border-color: #87bba2; /* Change border color on hover */
+  background-color: #6b6b6b; /* Change background color on hover */
+  color: #fff; /* Change text color on hover */
+}
+
+/* Hover effect for .gen-nav-item */
+.gen-nav-item:hover {
+  border-bottom-color: #fed766; /* Change border color on hover */
+}
+
+/* Hover effect for .gen-nav-item.active (for active state) */
+.gen-nav-item.active:hover {
+  border-bottom-color: #fed766; /* Ensure active border color is consistent */
+}
+
+/* Hover effect for .loading-indicator and .loading-comic-indicator */
+.loading-indicator:hover, .loading-comic-indicator:hover {
+  cursor: default; /* Change cursor to default when hovering over the loading screen */
+}
+/* Hover effect for .box */
+.box:hover {
+  background-color: #076065; /* Change background color on hover */
+  border-color: #fff; /* Change border color on hover */
+  color: #fff; /* Change text color on hover */
+}
+
+/* Optional: Add active state effect if needed */
+.box:active {
+  background-color: #076065; /* Slightly darker background when clicked */
+  border-color: #ccc; /* Lighter border color when clicked */
 }
