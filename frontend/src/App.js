@@ -7,7 +7,6 @@ import Navbar from './components/Nav/Navbar';
 import Signup from './components/sign_up/signup';
 import Feedback from './components/Feedback/feedback';
 import './App.css';
-import ViewBrowser from './components/Generate/ViewBrowser';
 import PrivateComponent from './components/PrivateComp/PrivateComponent';
 import Logout from './components/Logout/logout';
 import PublicRoute from './components/PublicRoute/PublicRoute';
@@ -31,7 +30,6 @@ function App() {
         {/* Private routes for logged-in users */}
         <Route element={<PrivateComponent />}>
           <Route path="/generate" element={<Generate />} />
-          <Route path="/view-browser" element={<ViewBrowser />} />
           <Route path="/feedback" element={<Feedback />} />
         </Route>
 

@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import "./generate.css";
 import generatebg from "../../assets/generatebg.png";
-import genpreview from "../../assets/gen-preview.png";
 import magicwand from "../../assets/magic-wand.png";
 import gendown from "../../assets/gen-down.png";
-import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Generate = () => {
-  const [selectedTab, setSelectedTab] = useState("");
+  // Set the default active tab to "tab1"
+  const [selectedTab, setSelectedTab] = useState("tab1");
   const [numCharacters, setNumCharacters] = useState(1);
   const [characters, setCharacters] = useState([]);
   const [scenes, setScenes] = useState([{ id: 1, heading: "Scene 1", content: "" }]);
@@ -16,11 +15,32 @@ const Generate = () => {
   const [processedScenes, setProcessedScenes] = useState([]);
   const [imageUrls, setImageUrls] = useState([]); // Define state for image URLs
   const [email, setEmail] = useState(""); // State for email input
+  const [loading, setLoading] = useState(false);
+  const [loadingComic, setLoadingComic] = useState(false);
 
 
   const handleTabClick = (tab) => {
     setSelectedTab(tab);
   };
+  const LoadingIndicator = () => (
+    <div className="loading-indicator">
+      <div className="loading-content">
+        <p>Please wait while we bring your Characters to life.</p>
+        <div className="spinner"></div>
+      </div>
+    </div>
+  );
+
+
+  const LoadingComicIndicator = () => (
+    <div className="loading-comic-indicator">
+      <div className="loading-content">
+        <p>Comic crafting in progress - get ready to be amazed!</p>
+        <div className="spinner"></div>
+      </div>
+    </div>
+  );
+
 
   async function generateAnswer(e) {
     e.preventDefault();
@@ -45,8 +65,10 @@ const Generate = () => {
         data: { prompt }
       });
       console.log("Generated dialogue:", response.data.dialogues);
+      alert("Dialogues Generated Successfully!");
     } catch (error) {
       console.error("Error generating answer:", error);
+      alert("An error occurred while generating dialogues. Please try again.");
     }
   }
 
@@ -141,6 +163,7 @@ const Generate = () => {
 
 
   const generateComic = async () => {
+    setLoading(true); // Show loading indicator
     const payload = {
       artStyle: 'pixar art',
       pages: [
@@ -150,7 +173,6 @@ const Generate = () => {
       ]
     };
     console.log("Payload is:", payload);
-
 
     try {
       const response = await axios.post('http://localhost:4000/comic/generate', payload, {
@@ -164,70 +186,77 @@ const Generate = () => {
       setImageUrls(imageUrlsFromResponse); // Update state with multiple URLs
     } catch (error) {
       console.error('Failed to generate comic:', error);
+    } finally {
+      setLoading(false); // Hide loading indicator
     }
   };
 
 
   const downloadImages = async () => {
     try {
-        if (imageUrls.length === 0) {
-            throw new Error('No image URLs available');
+      if (imageUrls.length === 0) {
+        throw new Error('No image URLs available');
+      }
+
+      for (let i = 0; i < imageUrls.length; i++) {
+        const url = imageUrls[i];
+        console.log(`Downloading image from URL: ${url}`);
+        const response = await fetch(`http://localhost:4000/proxy-image?url=${encodeURIComponent(url)}&index=${i}`);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch image from proxy: ${url}`);
         }
 
-        for (let i = 0; i < imageUrls.length; i++) {
-            const url = imageUrls[i];
-            console.log(`Downloading image from URL: ${url}`);
-            const response = await fetch(`http://localhost:4000/proxy-image?url=${encodeURIComponent(url)}&index=${i}`);
-            if (!response.ok) {
-                throw new Error(`Failed to fetch image from proxy: ${url}`);
-            }
+        const filename = await response.text(); // Get the filename from server response
 
-            const filename = await response.text(); // Get the filename from server response
+        // Use XHR to download the image to 'images' folder on backend
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', `http://localhost:4000/download-image?filename=${filename}`, true);
+        xhr.responseType = 'blob';
 
-            // Use XHR to download the image to 'images' folder on backend
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', `http://localhost:4000/download-image?filename=${filename}`, true);
-            xhr.responseType = 'blob';
+        xhr.onload = function () {
+          const blob = xhr.response;
+          const a = document.createElement('a');
+          a.href = window.URL.createObjectURL(blob);
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        };
 
-            xhr.onload = function () {
-                const blob = xhr.response;
-                const a = document.createElement('a');
-                a.href = window.URL.createObjectURL(blob);
-                a.download = filename;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-            };
-
-            xhr.send();
-        }
+        xhr.send();
+      }
     } catch (error) {
-        console.error('Error downloading images:', error);
+      console.error('Error downloading images:', error);
     }
-};
+  };
 
 
-const handleProcessImages = async () => {
-  try {
+  const handleProcessImages = async () => {
     if (!email) {
       alert('Please provide an email address.');
       return;
     }
 
-    // Send POST request to process images with email
-    const response = await axios.post('http://localhost:4000/process-image', { email });
-    
-    // Log response and show success message
-    console.log(response.data);
-    alert('Comic Crafted Successfully!!!');
-  } catch (error) {
-    console.error('Error processing images:', error);
-    alert('Failed to process images. Check console for details.');
-  }
-};
+    setLoadingComic(true); // Show comic loading indicator
+
+    try {
+      // Send POST request to process images with email
+      const response = await axios.post('http://localhost:4000/process-image', { email });
+      console.log(response.data);
+      alert('Comic Crafted Successfully!!!');
+    } catch (error) {
+      console.error('Error processing images:', error);
+      alert('Failed to process images. Check console for details.');
+    } finally {
+      setLoadingComic(false); // Hide comic loading indicator
+    }
+  };
+
 
   return (
     <div className="gen-container">
+      {loading && <LoadingIndicator />}
+      {loadingComic && <LoadingComicIndicator />}
       <div className="gen-left">
         <div className="gen-navbar">
           <div
@@ -290,7 +319,7 @@ const handleProcessImages = async () => {
           )}
           {selectedTab === "tab3" && (
             <form className="story-board-tab">
-             <label htmlFor="gen-email">Email:</label>
+              <label htmlFor="gen-email">Email:</label>
               <input
                 type="email"
                 id="gen-email"
@@ -330,27 +359,18 @@ const handleProcessImages = async () => {
           Transform Your Stories into Stunning Comics !!!
         </h1>
         <div className="boxes-container">
-        <div className="box-wrapper">
+          <div className="box-wrapper">
             <h2 className="box-heading">Generate Character</h2>
             <div className="box" onClick={generateComic}>
-              <img src={magicwand} alt="" id="magic"/>
+              <img src={magicwand} alt="" id="magic" />
             </div>
           </div>
-        <div className="box-wrapper">
+          <div className="box-wrapper">
             <h2 className="box-heading">Download</h2>
             <div className="box" onClick={downloadImages}>
               <img src={gendown} alt="" />
             </div>
           </div>
-          <div className="box-wrapper">
-            <h2 className="box-heading">View in Browser</h2>
-            <div className="box">
-              <Link to="/view-browser"> {/* Use Link for navigation */}
-                <img src={genpreview} alt="" />
-              </Link>
-            </div>
-          </div>
-
         </div>
       </div>
 
