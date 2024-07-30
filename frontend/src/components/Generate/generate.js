@@ -243,7 +243,7 @@ const Generate = () => {
       // Send POST request to process images with email
       const response = await axios.post('http://localhost:4000/process-image', { email });
       console.log(response.data);
-      alert('Comic Crafted Successfully!!!');
+      alert('Comic Crafted Successfully!!! Your Comic PDF awaits in the inbox.');
     } catch (error) {
       console.error('Error processing images:', error);
       alert('Failed to process images. Check console for details.');

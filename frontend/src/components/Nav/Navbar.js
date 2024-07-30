@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css'; // Ensure this CSS file is created for styling
 import Profilenavbar from '../../assets/Profilenavbar.png'; // Adjust path based on actual structure
@@ -10,6 +10,9 @@ const Navbar = () => {
 
   // Retrieve the username from local storage
   const username = localStorage.getItem('username');
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => setMenuOpen(prevState => !prevState);
 
   return (
     <nav className="navbar">
@@ -17,7 +20,14 @@ const Navbar = () => {
         <img src={logonavbar} alt="logo" className="navbar-logo-img" />
         <span>{isLoggedIn ? username : 'Guest'}</span> {/* Display username or 'Guest' */}
       </div>
-      <div className="navbar-items">
+      <button
+        className="navbar-toggle"
+        onClick={toggleMenu}
+        aria-label="Toggle menu"
+      >
+        ☰ {/* Unicode for hamburger menu icon */}
+      </button>
+      <div className={`navbar-items ${menuOpen ? 'active' : ''}`}>
         {isLoggedIn ? (
           <>
             <Link to="/logout">LOGOUT</Link>

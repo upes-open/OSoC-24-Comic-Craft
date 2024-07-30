@@ -20,6 +20,8 @@ body, html {
 
 .login-image {
     position: absolute;
+    opacity: 0.5; /* Default opacity for images */
+    z-index: 1; /* Set default z-index */
 }
 
 .login-image.top-left {
@@ -35,19 +37,9 @@ body, html {
     height: 70%; /* Make Batman image smaller */
 }
 
-.login-heading {
-    font-size: 55px; /* Slightly smaller font size */
-    margin-top: 60px;
-    text-align: center;
-    color: #B07156;
-    font-size: 4rem;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  text-shadow: -3px 0px 0px #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
-
+/* Ensure the login form is on top of the images */
 .login-form-container {
+    position: relative; /* Ensure the form container is positioned above images */
     text-align: center;
     padding: 1.3rem; /* Adjusted padding */
     border-radius: 8px;
@@ -57,9 +49,22 @@ body, html {
     margin-top: 15px; /* Reduced margin-top */
     height: 50%; /* Adjusted height */
     background-color: #2C514C; /* Dark green background */
+    z-index: 2; /* Ensure the form is above the images */
 }
 
-.login-username, .login-pass{
+.login-heading {
+    font-size: 55px; /* Slightly smaller font size */
+    margin-top: 60px;
+    text-align: center;
+    color: #B07156;
+    font-size: 4rem;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-shadow: -3px 0px 0px #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.login-username, .login-pass {
     text-shadow: -3px 0px 0px #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
@@ -99,7 +104,7 @@ body, html {
     border-radius: 8px; /* Increased border radius */
     cursor: pointer;
     font-size: 0.95rem; /* Slightly smaller font size */
-    font-weight:bolder;
+    font-weight: bolder;
 }
 
 .login-button:hover {
@@ -171,4 +176,101 @@ body, html {
     color: red; /* Change error message color to red */
     font-size: 0.95rem; /* Slightly smaller font size for error messages */
     margin-top: 6px; /* Further reduced margin top for error messages */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .login-heading {
+        font-size: 3rem; /* Adjust font size for smaller screens */
+        margin-top: 30px;
+        margin-bottom: 1rem;
+    }
+
+    .login-form-container {
+        width: 90%; /* Full width for smaller screens */
+        max-width: none; /* Remove max-width constraint */
+        height: auto; /* Adjust height for smaller screens */
+    }
+
+    .login-button, .google-login-button {
+        width: 100%; /* Full width for buttons */
+        max-width: none; /* Remove max-width constraint */
+    }
+
+    .login-or-container {
+        flex-direction: column; /* Stack OR line elements vertically */
+    }
+
+    .white-line {
+        width: 80%; /* Wider lines for smaller screens */
+        margin: 0.5rem 0; /* Adjust margin for better spacing */
+    }
+
+    .google-logo {
+        height: 18px; /* Adjust logo size */
+    }
+
+    /* Adjust images for smaller screens */
+    .login-image {
+        opacity: 0.3; /* Reduce opacity */
+    }
+
+    .login-image.top-left {
+        top: 0px; /* Move image up */
+        left: 0px; /* Ensure it's aligned to the left */
+        height: 60%; /* Adjust height */
+        z-index: 0; /* Send behind the form */
+    }
+
+    .login-image.bottom-right {
+        bottom: 0px;
+        right: 0px; /* Align image to the right */
+        height: 60%; /* Adjust height */
+        z-index: 0; /* Send behind the form */
+    }
+}
+
+@media (max-width: 480px) {
+    .login-heading {
+        font-size: 2rem; /* Smaller font size for very small screens */
+        margin-top: 20px;
+        margin-bottom: 0.5rem;
+    }
+
+    .login-input {
+        max-width: 100%; /* Full width for inputs */
+        font-size: 0.85rem; /* Smaller font size for inputs */
+    }
+
+    .login-button, .google-login-button {
+        padding: 0.5rem; /* Smaller padding for buttons */
+    }
+
+    .white-line {
+        width: 90%; /* Wider lines for very small screens */
+        margin: 0.5rem 0; /* Adjust margin for better spacing */
+    }
+
+    .google-logo {
+        height: 16px; /* Adjust logo size */
+    }
+
+    /* Further adjust images for very small screens */
+    .login-image {
+        opacity: 0.2; /* Further reduce opacity */
+    }
+
+    .login-image.top-left {
+        top: -10px; /* Move image further up */
+        left: -10px; /* Move image further left */
+        height: 50%; /* Adjust height */
+        z-index: 0; /* Ensure it's behind the form */
+    }
+
+    .login-image.bottom-right {
+        bottom: -10px; /* Move image further down */
+        right: -10px; /* Move image further right */
+        height: 50%; /* Adjust height */
+        z-index: 0; /* Ensure it's behind the form */
+    }
 }

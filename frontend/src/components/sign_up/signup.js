@@ -84,6 +84,7 @@ const Signup = () => {
             <label htmlFor="firstName">First Name</label>
             <input
               type="text"
+              id="firstName"
               name="firstName"
               placeholder="First Name"
               value={formData.firstName}
@@ -96,6 +97,7 @@ const Signup = () => {
             <label htmlFor="lastName">Last Name</label>
             <input
               type="text"
+              id="lastName"
               name="lastName"
               placeholder="Last Name"
               value={formData.lastName}
@@ -108,6 +110,7 @@ const Signup = () => {
             <label htmlFor="email">Email</label>
             <input
               type="email"
+              id="email"
               name="email"
               placeholder="Email"
               value={formData.email}
@@ -120,6 +123,7 @@ const Signup = () => {
             <label htmlFor="password">Password</label>
             <input
               type="password"
+              id="password"
               name="password"
               placeholder="Password"
               value={formData.password}
@@ -131,6 +135,7 @@ const Signup = () => {
           <div className="form-group">
             <label htmlFor="gender">Gender</label>
             <select
+              id="gender"
               name="gender"
               value={formData.gender}
               onChange={handleChange}
@@ -147,6 +152,7 @@ const Signup = () => {
             <label htmlFor="username">Username</label>
             <input
               type="text"
+              id="username"
               name="username"
               placeholder="Username"
               value={formData.username}
