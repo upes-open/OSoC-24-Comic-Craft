@@ -41,6 +41,7 @@
 .box-heading {
   margin-bottom: 10px; /* Space between heading and box */
   font-size: 1.2em;
+  color: #ffffff;
 }
 
 .box {
@@ -439,4 +440,69 @@ button, .gen-button, .add-button, #gen-char-save, #gen-sceneinfo, #gdialogue {
 .box:active {
   background-color: #076065; /* Slightly darker background when clicked */
   border-color: #ccc; /* Lighter border color when clicked */
+}
+
+/* Existing CSS remains unchanged */
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .gen-container {
+    flex-direction: column; /* Stack the left and right sections vertically */
+    height: auto; /* Adjust height to fit content */
+    overflow: visible; /* Allow overflow for vertical layout */
+  }
+
+  .gen-left,
+  .gen-right {
+    width: 90%; /* Ensure both sections take full width */
+    border: none; /* Remove the border between left and right sections */
+  }
+
+  .gen-right {
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+
+  .gen-navbar{
+    width:90%;
+  }
+
+  .gen-head {
+    font-size: 1.5rem; /* Adjust font size for smaller screens */
+    margin-left: 0; /* Remove left margin */
+    text-align: center; /* Center align text */
+  }
+
+  .boxes-container {
+    flex-direction: column; /* Stack the boxes vertically */
+    align-items: center; /* Center align items horizontally */
+  }
+
+  .box-wrapper {
+    margin: 10px 0; /* Adjust margin for vertical stacking */
+  }
+
+  .generatebg {
+    width: 100%; /* Ensure background image takes full width */
+    height: auto; /* Adjust height to maintain aspect ratio */
+    position: relative; /* Ensure proper positioning */
+    top: auto; /* Reset top positioning */
+    right: auto; /* Reset right positioning */
+  }
+
+  .gen-button {
+    width: 100%; /* Ensure button takes full width */
+    position: static; /* Reset position for stacking */
+    top: auto; /* Reset top positioning */
+    right: auto; /* Reset right positioning */
+    margin-top: 10px; /* Add margin for spacing */
+  }
+
+  .gen-left form,
+  .story-board-tab {
+    width: 100%; /* Ensure forms take full width */
+  }
+
+  .scene-textbox {
+    width: 100%; /* Ensure textareas take full width */
+  }
 }
