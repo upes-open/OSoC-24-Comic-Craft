@@ -10,6 +10,7 @@ import './App.css';
 import PrivateComponent from './components/PrivateComp/PrivateComponent';
 import Logout from './components/Logout/logout';
 import PublicRoute from './components/PublicRoute/PublicRoute';
+import VideoComponent from './components/UserGuide/UserGuide';
 
 function App() {
   const location = useLocation();
@@ -31,6 +32,7 @@ function App() {
         <Route element={<PrivateComponent />}>
           <Route path="/generate" element={<Generate />} />
           <Route path="/feedback" element={<Feedback />} />
+          <Route path="/userguide" element={<VideoComponent />}/>
         </Route>
 
         {/* Default and other routes */}

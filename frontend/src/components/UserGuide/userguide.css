@@ -1,0 +1,145 @@
+.video-container {
+    text-align: center;
+    color: #C08552;
+    font-size: 1.6rem;
+    font-weight: bolder;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    text-shadow: -3px 0px 0px #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.video {
+    display: block;
+    margin: 0 auto;
+}
+
+.sections-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px; /* Space around the container */
+}
+
+.section {
+    flex: 1;
+    padding: 20px; /* Space inside each section */
+    margin: 0 10px; /* Space between each section */
+    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+    background: linear-gradient(to bottom right, #f0f0f0, #476A6F); /* Gradient background for sections */
+    border-radius: 10px; /* Rounded corners for the sections */
+    border: 1px solid #ddd; /* Border for the sections */
+}
+
+.section:not(:last-child) {
+    border-right: 1px solid #ccc;
+}
+
+/* Specific styles for Characters section */
+.characters-heading {
+    font-size: 1.5rem; /* Increase font size */
+    font-weight: 700; /* Increase font weight */
+    color: #000000; /* Text color */
+    background: linear-gradient(to right, #F08700, #F08700); /* Gradient text background */
+    -webkit-background-clip: text; /* Clips the background to the text */
+    color: transparent; /* Makes text color transparent to show gradient */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow */
+}
+
+.characters-list {
+    list-style-type: disc; /* Default bullet points for sections */
+    padding-left: 20px;
+}
+
+.characters-list li {
+    font-size: 1rem; /* Font size for list items */
+    color: #000000; /* Text color */
+    margin-bottom: 10px; /* Space between list items */
+}
+
+/* Specific styles for Scenes section */
+.scenes-heading {
+    font-size: 1.5rem; /* Increase font size */
+    font-weight: 700; /* Increase font weight */
+    color: #000000; /* Text color */
+    background: linear-gradient(to right, #F08700, #F08700); /* Gradient text background */
+    -webkit-background-clip: text; /* Clips the background to the text */
+    color: transparent; /* Makes text color transparent to show gradient */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow */
+}
+
+.scenes-list {
+    list-style-type: disc; /* Default bullet points for sections */
+    padding-left: 20px;
+}
+
+.scenes-list li {
+    font-size: 1rem; /* Font size for list items */
+    color: #000000; /* Text color */
+    margin-bottom: 10px; /* Space between list items */
+}
+
+/* Specific styles for Storyboard section */
+.storyboard-heading {
+    font-size: 1.5rem; /* Increase font size */
+    font-weight: 700; /* Increase font weight */
+    color: #000000; /* Text color */
+    background: linear-gradient(to right, #F08700, #F08700); /* Gradient text background */
+    -webkit-background-clip: text; /* Clips the background to the text */
+    color: transparent; /* Makes text color transparent to show gradient */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow */
+}
+
+.storyboard-list {
+    list-style-type: disc; /* Default bullet points for sections */
+    padding-left: 20px;
+}
+
+.storyboard-list li {
+    font-size: 1rem; /* Font size for list items */
+    color: #000000; /* Text color */
+    margin-bottom: 10px; /* Space between list items */
+}
+
+/* Specific styles for Instructions section */
+.instructions-container {
+    text-align: center;
+    margin: 20px; /* Space around the container */
+    background: linear-gradient(to bottom right, #f0f0f0, #476A6F); /* Consistent gradient background */
+    padding: 20px; /* Space inside the container */
+    border-radius: 10px; /* Rounded corners */
+    border: 1px solid #ddd; /* Border for the container */
+}
+
+.instructions-heading {
+    font-size: 1.5rem; /* Font size for heading */
+    font-weight: 700; /* Increase font weight */
+    background: linear-gradient(to right, #F08700, #F08700); /* Gradient text background */
+    -webkit-background-clip: text; /* Clips the background to the text */
+    color: transparent; /* Makes text color transparent to show gradient */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow */
+}
+
+.instructions-list {
+    list-style-type: none; /* Remove bullets */
+    padding-left: 0; /* Remove left padding */
+}
+
+.instructions-list li {
+    font-size: 1rem; /* Font size for list items */
+    color: #000000; /* Text color */
+    margin-bottom: 10px; /* Space between list items */
+}
+
+.happy-crafting-container { 
+    padding: 20px; /* Space inside the container */
+}
+
+.happy-crafting-container h1 {
+    text-align: center;
+    font-size: 3rem; /* Font size for heading */
+    background: linear-gradient(to right, #c84f03, #E9B44C); /* Gradient text background */
+    margin: 0; /* Remove margin */
+    font-weight: bolder;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow */
+    font-style: italic;
+}
