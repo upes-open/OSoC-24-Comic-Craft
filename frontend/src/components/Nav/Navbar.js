@@ -32,14 +32,14 @@ const Navbar = () => {
           <>
             <Link to="/logout">LOGOUT</Link>
             <Link to="/generate">GENERATE</Link>
-            <Link to="/my-comics">MY COMICS</Link>
+            <Link to="/userguide">USER GUIDE</Link>
             <Link to="/feedback">FEEDBACK</Link>
           </>
         ) : (
           <>
             <Link to="/signup">SIGNUP</Link>
             <Link to="/generate">GENERATE</Link>
-            <Link to="/my-comics">MY COMICS</Link>
+            <Link to="/userguide">USER GUIDE</Link>
             <Link to="/feedback">FEEDBACK</Link>
           </>
         )}
